@@ -23,5 +23,13 @@ class Order(db.Model):
 
     items = db.relationship(
         'Item', secondary=order_items, back_populates='orders')
+    user = db.relationship('User', back_populates='orders')
 
-    # business = db.relationship("Business", back_populates="items")
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "amount_paid": self.amount_paid,
+            "donation_amount": self.donation_amount,
+            "user": self.user.last_name,
+            "order_date": self.date_created,
+        }

@@ -22,3 +22,12 @@ class Business(db.Model):
     ), onupdate=db.func.current_timestamp())
 
     items = db.relationship("Item", back_populates="business")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "img_url": self.img_url,
+            "rating": self.rating,
+            "type": self.type,
+        }

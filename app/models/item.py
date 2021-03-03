@@ -1,11 +1,5 @@
 from .db import db
 from .order import order_items
-# order_items = db.Table('order_items',
-#                        db.Column('user_id', db.Integer, db.ForeignKey(
-#                            'users.id'), primary_key=True),
-#                        db.Column('item_id', db.Integer, db.ForeignKey(
-#                            'items.id'), primary_key=True)
-#                        )
 
 
 class Item(db.Model):
@@ -27,3 +21,14 @@ class Item(db.Model):
     business = db.relationship("Business", back_populates="items")
     orders = db.relationship(
         'Order', secondary=order_items, back_populates='items')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "description": self.description,
+            "img_url": self.img_url,
+            "price": self.price,
+            "donation_percentage": self.donation_percentage,
+            "business": self.business.to_dict(),
+        }

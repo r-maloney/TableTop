@@ -20,3 +20,10 @@ class Charity(db.Model):
     ), onupdate=db.func.current_timestamp())
 
     users = db.relationship("User", back_populates="charity")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "img_url": self.img_url,
+        }
