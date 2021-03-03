@@ -1,3 +1,8 @@
 {
-  "python.pythonPath": "/Users/ryanmaloney/Desktop/code/TableTop/.venv/bin/python3.8"
+  "python.pythonPath": "/Users/ryanmaloney/Desktop/code/TableTop/.venv/bin/python3.8",
+  "python.linting.pylintArgs": [
+    "--load-plugins",
+    "pylint_flask_sqlalchemy",
+    "pylint_flask",               
+]
 }

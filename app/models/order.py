@@ -1,0 +1,27 @@
+from .db import db
+
+order_items = db.Table('order_items',
+                       db.Column('user_id', db.Integer, db.ForeignKey(
+                           'users.id'), primary_key=True),
+                       db.Column('item_id', db.Integer, db.ForeignKey(
+                           'items.id'), primary_key=True)
+                       )
+
+
+class Order(db.Model):
+    __tablename__ = 'orders'
+
+    id = db.Column(db.Integer, primary_key=True)
+    amount_paid = db.Column(db.Float, nullable=False)
+    donation_amount = db.Column(db.Float, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        "users.id"), nullable=False)
+
+    date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
+    ), onupdate=db.func.current_timestamp())
+
+    items = db.relationship(
+        'Item', secondary=order_items, back_populates='orders')
+
+    # business = db.relationship("Business", back_populates="items")
