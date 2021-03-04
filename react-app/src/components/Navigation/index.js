@@ -1,27 +1,36 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
+import LogoutButton from "../auth/LogoutButton";
+import "./navigation.css";
 
-const Navigation = () => {
+const Navigation = ({ setAuthenticated }) => {
   return (
-    <nav>
-      <div className='navbar'>
-        <div className='nav__logo'>
-          <NavLink exact to='/'>
-            Logo
+    <nav className='nav__container'>
+      <ul>
+        <li>
+          <NavLink to='/' exact={true} activeClassName='active'>
+            Home
           </NavLink>
-        </div>
-        <div className='nav__space'></div>
-        <div className='nav__links'>
-          <NavLink exact to='/'>
-            Logo
+        </li>
+        <li>
+          <NavLink to='/login' exact={true} activeClassName='active'>
+            Login
           </NavLink>
-          <NavLink exact to='/'>
-            Logo
+        </li>
+        <li>
+          <NavLink to='/sign-up' exact={true} activeClassName='active'>
+            Sign Up
           </NavLink>
-          <NavLink exact to='/'>
-            Logo
+        </li>
+        <li>
+          <NavLink to='/users' exact={true} activeClassName='active'>
+            Users
           </NavLink>
-        </div>
-      </div>
+        </li>
+        <li>
+          <LogoutButton setAuthenticated={setAuthenticated} />
+        </li>
+      </ul>
     </nav>
   );
 };

@@ -22,3 +22,27 @@
 .slide1 {
   /* background-size: cover; */
 }
+
+.splash__container {
+  display: grid;
+  margin: auto;
+  width: 80%;
+}
+
+.splash__header {
+  background-image: url("../../images/wood_background.jpg");
+}
+
+.splash__step {
+  display: grid;
+  grid-template-columns: auto auto;
+  height: auto;
+}
+
+.splash__step h2 {
+  display: grid;
+}
+
+.splash__step img {
+  height: 10rem;
+}
