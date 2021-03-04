@@ -1,10 +1,24 @@
+.slide-selected {
+  background-color: transparent;
+}
+
 .slide {
-  max-height: 30rem;
+  background-color: transparent;
+  height: 30rem;
+  /* background-image: url("/images/health-carousel-cropped.png"); */
+  /* background-image: url(`${process.env.PUBLIC_URL}/images/background-image-${randNum}.jpg`); */
   /* background-position: center bottom; */
   /* margin-bottom: -20rem; */
   /* margin-top: 20rem; */
+  object-fit: cover;
+  overflow: hidden;
+  object-position: 50% 50%;
 }
 
 .slide img {
   /* margin: -10rem; */
+}
+
+.slide1 {
+  /* background-size: cover; */
 }
