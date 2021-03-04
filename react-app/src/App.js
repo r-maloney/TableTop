@@ -8,6 +8,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Splash from "./components/Splash";
+import Home from "./components/Home";
+import Navigation from "./components/Navigation";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -58,7 +60,8 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
-          <Splash />
+          <Navigation />
+          <Home />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
