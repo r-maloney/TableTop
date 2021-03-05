@@ -14,8 +14,10 @@ const Splash = () => {
     <div className='splash__container'>
       <div className='splash__header'>
         <div className='splash__blur'>
-          <h1>Welcome to TableTop</h1>
-          <p>Enter your email to get started</p>
+          <div className='splash__title'>
+            <h1>Welcome to TableTop</h1>
+            <p>Enter your email to get started</p>
+          </div>
         </div>
       </div>
       <div className='splash__steps'>
