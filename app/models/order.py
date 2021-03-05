@@ -1,8 +1,9 @@
 from .db import db
+from .user import user_orders
 
 order_items = db.Table('order_items',
-                       db.Column('user_id', db.Integer, db.ForeignKey(
-                           'users.id'), primary_key=True),
+                       db.Column('order_id', db.Integer, db.ForeignKey(
+                           'orders.id'), primary_key=True),
                        db.Column('item_id', db.Integer, db.ForeignKey(
                            'items.id'), primary_key=True)
                        )
@@ -23,7 +24,9 @@ class Order(db.Model):
 
     items = db.relationship(
         'Item', secondary=order_items, back_populates='orders')
-    user = db.relationship('User', back_populates='orders')
+    # users = db.relationship('User', back_populates='orders')
+    users = db.relationship(
+        "User", secondary=user_orders, back_populates="orders")
 
     def to_dict(self):
         return {

@@ -7,7 +7,6 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Splash from "./components/Splash";
-import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 
 function App() {

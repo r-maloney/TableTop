@@ -13,29 +13,33 @@ const Splash = () => {
   return (
     <div className='splash__container'>
       <div className='splash__header'>
-        <h1>Welcome to TableTop</h1>
-        <p>Enter your email to get started</p>
-      </div>
-      <div className='splash__step'>
-        <div>
-          <h2>Step 1</h2>
-          <p>Select a charity you would like to benefit</p>
-        </div>
-        <img src={charityIcon} alt='Charity' />
-      </div>
-      <div className='splash__step'>
-        <img src={shopIcon} alt='Shop' />
-        <div>
-          <h2>Step 2</h2>
-          <p>Explore restaurants, stores, and services</p>
+        <div className='splash__blur'>
+          <h1>Welcome to TableTop</h1>
+          <p>Enter your email to get started</p>
         </div>
       </div>
-      <div className='splash__step'>
-        <div>
-          <h2>Step 3</h2>
-          <p>Checkout and a portion of your total will go to charity</p>
+      <div className='splash__steps'>
+        <div className='splash__step'>
+          <div>
+            <h2>Step 1</h2>
+            <p>Select a charity you would like to benefit</p>
+          </div>
+          <img src={charityIcon} alt='Charity' />
         </div>
-        <img src={donateIcon} alt='Checkout' />
+        <div className='splash__step'>
+          <img src={shopIcon} alt='Shop' />
+          <div>
+            <h2>Step 2</h2>
+            <p>Explore restaurants, stores, and services</p>
+          </div>
+        </div>
+        <div className='splash__step'>
+          <div>
+            <h2>Step 3</h2>
+            <p>Checkout and a portion of your total will go to charity</p>
+          </div>
+          <img src={donateIcon} alt='Checkout' />
+        </div>
       </div>
     </div>
 
