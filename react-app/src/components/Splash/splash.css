@@ -51,6 +51,12 @@
 .splash__title p {
 }
 
+.splash__input {
+  width: 30%;
+  justify-self: center;
+  margin-top: 2rem;
+}
+
 .splash__steps {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

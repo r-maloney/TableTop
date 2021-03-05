@@ -11,7 +11,7 @@ const Navigation = ({ setAuthenticated }) => {
         <img className='nav__logo' src={logo} alt='TT logo'></img>
         <h2>TABLETOP</h2>
       </div>
-      <div className='nav__space'>Space</div>
+      <div className='nav__space'></div>
       <div className='nav__links'>
         <ul>
           <li>
