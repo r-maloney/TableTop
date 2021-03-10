@@ -22,7 +22,10 @@ const Splash = () => {
             <h1>Welcome to TableTop</h1>
             <p>Enter your email to get started</p>
             <input className='splash__input' placeholder='Enter your email' />
-            <button onClick={() => setRegistration(!registration)}>
+            <button
+              className='splash__email-btn'
+              onClick={() => setRegistration(!registration)}
+            >
               Submit
             </button>
             {registration && <SignUpForm />}

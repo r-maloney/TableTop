@@ -57,6 +57,13 @@
   margin-top: 2rem;
 }
 
+.splash__email-btn {
+  margin-top: 1rem;
+  width: 5rem;
+  color: black;
+  justify-self: center;
+}
+
 .splash__steps {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
