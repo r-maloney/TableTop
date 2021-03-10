@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import logo from "../../images/logos/TTLogo.png";
+import AuthModal from "../auth/AuthModal";
 import "./navigation.css";
 
 const Navigation = ({ authenticated, setAuthenticated }) => {
@@ -34,7 +35,7 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
         <ul>
           <li>
             <NavLink to='/login' exact={true} activeClassName='active'>
-              Login
+              <AuthModal />
             </NavLink>
           </li>
           <li>
