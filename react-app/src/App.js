@@ -8,6 +8,7 @@ import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Splash from "./components/Splash";
 import Navigation from "./components/Navigation";
+import Home from "./components/Home";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -29,13 +30,20 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navigation setAuthenticated={setAuthenticated} />
+      <Navigation
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+      />
       <Switch>
         <Route path='/login' exact={true}>
-          <LoginForm
+          <Splash
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+          {/* <LoginForm
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          /> */}
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm
@@ -58,7 +66,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
-          <Splash />
+          <Home />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
