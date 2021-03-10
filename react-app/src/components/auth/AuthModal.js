@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import LoginForm from "./LoginForm";
 
-function AuthModal() {
+function AuthModal({ authenticated, setAuthenticated }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -13,10 +13,12 @@ function AuthModal() {
       </button>
       {showModal && (
         <>
-          <h1>Outside modal</h1>
           <Modal onClose={() => setShowModal(false)}>
-            <h1>Hello, does this show up? </h1>
-            {/* <LoginForm /> */}
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+              setShowModal={setShowModal}
+            />
           </Modal>
         </>
       )}
