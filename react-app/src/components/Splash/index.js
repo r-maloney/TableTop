@@ -6,12 +6,9 @@ import donateIcon from "../../images/icons/heart_box_donation.png";
 import shopIcon from "../../images/icons/shop_store.png";
 import charityIcon from "../../images/icons/charity_donation.png";
 import SignUpForm from "../auth/SignUpForm";
+import AuthModal from "../auth/AuthModal";
 
 const Splash = () => {
-  // const style = {
-  //   backgroundImage: `url(${backgroundImage})`,
-  // };
-
   const [registration, setRegistration] = useState(false);
 
   return (
@@ -29,6 +26,7 @@ const Splash = () => {
               Submit
             </button>
             {registration && <SignUpForm />}
+            <AuthModal />
           </div>
         </div>
         <svg

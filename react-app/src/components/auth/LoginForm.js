@@ -25,9 +25,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
+  // if (authenticated) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <form onSubmit={onLogin}>
@@ -37,25 +37,25 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         ))}
       </div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor='email'>Email</label>
         <input
-          name="email"
-          type="text"
-          placeholder="Email"
+          name='email'
+          type='text'
+          placeholder='Email'
           value={email}
           onChange={updateEmail}
         />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor='password'>Password</label>
         <input
-          name="password"
-          type="password"
-          placeholder="Password"
+          name='password'
+          type='password'
+          placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <button type='submit'>Login</button>
       </div>
     </form>
   );

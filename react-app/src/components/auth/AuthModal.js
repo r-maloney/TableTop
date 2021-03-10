@@ -12,13 +12,14 @@ function AuthModal() {
         Login
       </button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <LoginForm />
-        </Modal>
+        <>
+          <h1>Outside modal</h1>
+          <Modal onClose={() => setShowModal(false)}>
+            <h1>Hello, does this show up? </h1>
+            {/* <LoginForm /> */}
+          </Modal>
+        </>
       )}
-      <Modal onClose={() => setShowModal(false)}>
-        <h1>hello</h1>
-      </Modal>
     </>
   );
 }

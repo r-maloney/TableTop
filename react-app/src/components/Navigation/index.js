@@ -34,9 +34,9 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
       <div className='nav__links'>
         <ul>
           <li>
-            <NavLink to='/login' exact={true} activeClassName='active'>
-              <AuthModal />
-            </NavLink>
+            {/* <NavLink to='/login' exact={true} activeClassName='active'> */}
+            <AuthModal />
+            {/* </NavLink> */}
           </li>
           <li>
             <NavLink to='/sign-up' exact={true} activeClassName='active'>
