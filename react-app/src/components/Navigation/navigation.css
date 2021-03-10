@@ -1,3 +1,38 @@
 .nav__container {
-  border-bottom: 1px solid;
+  display: grid;
+  grid-template: 4rem / 2fr 3fr 3fr;
+  overflow: hidden;
+}
+
+.nav__logo-container {
+  height: 4rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.nav__logo {
+  align-self: center;
+  justify-self: end;
+  height: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+}
+.nav__logo-container h2 {
+  align-self: center;
+  padding-left: 0;
+}
+
+.nav__links ul {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 1rem;
+  list-style-type: none;
+}
+
+.nav__links li {
+  padding-right: 1rem;
+  text-decoration: none;
 }

@@ -38,13 +38,30 @@
   height: 100%;
 }
 
-.splash__header h1 {
+.splash__title {
   color: white;
   font-size: 2rem;
+  display: grid;
+  text-align: center;
+  padding-top: 2rem;
 }
-.splash__header p {
-  color: white;
-  font-size: 2rem;
+
+.splash__title h1 {
+}
+.splash__title p {
+}
+
+.splash__input {
+  width: 30%;
+  justify-self: center;
+  margin-top: 2rem;
+}
+
+.splash__email-btn {
+  margin-top: 1rem;
+  width: 5rem;
+  color: black;
+  justify-self: center;
 }
 
 .splash__steps {

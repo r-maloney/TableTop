@@ -1,21 +1,35 @@
 import { Carousel } from "react-responsive-carousel";
+import { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./splash.css";
 import donateIcon from "../../images/icons/heart_box_donation.png";
 import shopIcon from "../../images/icons/shop_store.png";
 import charityIcon from "../../images/icons/charity_donation.png";
+import SignUpForm from "../auth/SignUpForm";
 
 const Splash = () => {
   // const style = {
   //   backgroundImage: `url(${backgroundImage})`,
   // };
 
+  const [registration, setRegistration] = useState(false);
+
   return (
     <div className='splash__container'>
       <div className='splash__header'>
         <div className='splash__blur'>
-          <h1>Welcome to TableTop</h1>
-          <p>Enter your email to get started</p>
+          <div className='splash__title'>
+            <h1>Welcome to TableTop</h1>
+            <p>Enter your email to get started</p>
+            <input className='splash__input' placeholder='Enter your email' />
+            <button
+              className='splash__email-btn'
+              onClick={() => setRegistration(!registration)}
+            >
+              Submit
+            </button>
+            {registration && <SignUpForm />}
+          </div>
         </div>
       </div>
       <div className='splash__steps'>
