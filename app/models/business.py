@@ -26,6 +26,7 @@ class Business(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
+            "name": self.name,
             "description": self.description,
             "img_url": self.img_url,
             "rating": self.rating,
