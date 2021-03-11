@@ -33,7 +33,6 @@ function LoginForm({ setAuthenticated }) {
     const credential = "demo@aa.io";
     const password = "password";
     const res = await dispatch(login(credential, password));
-    console.log("hello demo");
     history.push("/");
   };
 

@@ -75,11 +75,15 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await fetch("/api/session", {
-    method: "DELETE",
+  const response = await fetch("/api/auth/logout", {
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
-  dispatch(removeUser());
-  return response;
+  if (response.ok) {
+    dispatch(removeUser());
+  }
+  return await response.json();
 };
 
 const initialState = { user: null };
