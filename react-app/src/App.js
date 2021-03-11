@@ -7,6 +7,9 @@ import { authenticate } from "./store/session";
 import Splash from "./components/Splash";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
+import Explore from "./components/Explore/Explore";
+import Give from "./components/Give/Give";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -38,6 +41,23 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </ProtectedRoute>
+        <ProtectedRoute
+          path='/explore'
+          exact={true}
+          authenticated={authenticated}
+        >
+          <Explore />
+        </ProtectedRoute>
+        <ProtectedRoute path='/give' exact={true} authenticated={authenticated}>
+          <Give />
+        </ProtectedRoute>
+        <ProtectedRoute
+          path='/shopping-cart'
+          exact={true}
+          authenticated={authenticated}
+        >
+          <ShoppingCart />
         </ProtectedRoute>
         <Route>Page Not Found</Route>
       </Switch>

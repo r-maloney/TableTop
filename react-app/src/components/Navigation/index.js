@@ -28,7 +28,7 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
                 Give
               </NavLink>
             </li>
-            <NavLink to='/cart' exact={true} activeClassName='active'>
+            <NavLink to='/shopping-cart' exact={true} activeClassName='active'>
               Shopping Cart
             </NavLink>
           </ul>
