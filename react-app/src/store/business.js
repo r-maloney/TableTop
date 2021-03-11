@@ -1,4 +1,4 @@
-const SET_BUSINESS = "business/setUser";
+const SET_BUSINESS = "business/setBusiness";
 
 const setBusinesses = (business) => {
   return {
@@ -8,11 +8,9 @@ const setBusinesses = (business) => {
 };
 
 export const getBusinesses = () => async (dispatch) => {
-  console.log("CHECK THUNK");
   const res = await fetch("/api/businesses");
   if (res.ok) {
-    const businesses = await res.json();
-    console.log("CHECK BUSINESSES", businesses);
+    const { businesses } = await res.json();
     await dispatch(setBusinesses(businesses));
     return res;
   }
@@ -21,12 +19,13 @@ export const getBusinesses = () => async (dispatch) => {
 const initialState = { business: null };
 
 const businessReducer = (state = initialState, action) => {
-  let newState;
+  // let newState;
   switch (action.type) {
     case SET_BUSINESS:
-      newState = Object.assign({}, state);
-      newState.business = action.payload;
-      return newState;
+      // newState = Object.assign({}, state);
+      // newState.business = action.payload;
+
+      return { ...action.payload };
     default:
       return state;
   }
