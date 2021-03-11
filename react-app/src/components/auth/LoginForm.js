@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-// import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
-// import "../AuthFormModal/AuthForm.css";
+import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import "./auth.css";
 import logo from "../../images/logos/TTLogoNoBackgroundOrange.jpg";
 
 function LoginForm({ setAuthenticated }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -17,6 +17,7 @@ function LoginForm({ setAuthenticated }) {
     const user = await dispatch(login(credential, password));
     if (!user.errors) {
       setAuthenticated(true);
+      history.push("/");
     } else {
       setErrors(user.errors);
     }
@@ -28,15 +29,12 @@ function LoginForm({ setAuthenticated }) {
   //   if (res.data && res.data.errors) setErrors(res.data.errors);
   // });
 
-  const demoLogin = () => {
-    return dispatch(
-      login({
-        credential: "demo@aa.io",
-        password: "password",
-      })
-    ).catch((res) => {
-      if (res.data && res.data.errors) setErrors(res.data.errors);
-    });
+  const demoLogin = async () => {
+    const credential = "demo@aa.io";
+    const password = "password";
+    const res = await dispatch(login(credential, password));
+    console.log("hello demo");
+    history.push("/");
   };
 
   // const [errors, setErrors] = useState([]);
