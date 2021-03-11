@@ -5,8 +5,9 @@ import donateIcon from "../../images/icons/heart_box_donation.png";
 import shopIcon from "../../images/icons/shop_store.png";
 import charityIcon from "../../images/icons/charity_donation.png";
 import SignUpForm from "../auth/SignUpForm";
+import LoginForm from "../auth/LoginForm";
 
-const Splash = () => {
+const Splash = ({ authenticated, setAuthenticated }) => {
   const [registration, setRegistration] = useState(false);
 
   return (
@@ -39,6 +40,11 @@ const Splash = () => {
       </div>
       <div className='splash__steps'>
         <div className='splash__step'>
+          <LoginForm
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+            // setShowModal={setShowModal}
+          />
           <div>
             <h2>Step 1</h2>
             <p>Select a charity you would like to benefit</p>

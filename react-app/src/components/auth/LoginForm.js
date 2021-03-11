@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 // import "../AuthFormModal/AuthForm.css";
 import { login } from "../../store/session";
+import "./auth.css";
+import logo from "../../images/logos/TTLogoNoBackgroundOrange.jpg";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -12,67 +14,75 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e, "hit");
     setErrors([]);
     return dispatch(login({ credential, password })).catch((res) => {
       if (res.data && res.data.errors) setErrors(res.data.errors);
     });
   };
 
-  // const demoLogin = () => {
-  //   return dispatch(
-  //     login({
-  //       credential: "DemoMcDemoson",
-  //       password: "password",
-  //     })
-  //   ).catch((res) => {
-  //     if (res.data && res.data.errors) setErrors(res.data.errors);
-  //   });
-  // };
+  const demoLogin = () => {
+    return dispatch(
+      login({
+        credential: "demo@aa.io",
+        password: "password",
+      })
+    ).catch((res) => {
+      if (res.data && res.data.errors) setErrors(res.data.errors);
+    });
+  };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className='auth__form'>
-        <div>
-          <ul className='auth__errors-list'>
-            {errors.map((error, idx) => (
-              <li className='auth__error' key={idx}>
-                {error}
-              </li>
-            ))}
-          </ul>
-          <div className='auth__form-group'>
-            <label className='auth__label'>Email</label>
-            <input
-              className='auth__input'
-              type='text'
-              value={credential}
-              onChange={(e) => setCredential(e.target.value)}
-              required
-            />
+    <div className='login__form'>
+      <div className='auth__container'>
+        <img src={logo} alt='logo' />
+        <form onSubmit={handleSubmit} className='auth__form'>
+          <div>
+            <ul className='auth__errors-list'>
+              {errors.map((error, idx) => (
+                <li className='auth__error' key={idx}>
+                  {error}
+                </li>
+              ))}
+            </ul>
+            <div className='auth__form-group'>
+              <label className='auth__label'>Email</label>
+              <input
+                className='auth__input'
+                type='text'
+                value={credential}
+                onChange={(e) => setCredential(e.target.value)}
+                required
+              />
+            </div>
+            <div className='auth__form-group'>
+              <label className='auth__label'>Password</label>
+              <input
+                className='auth__input'
+                type='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button
+              className='auth-form__button'
+              type='submit'
+              onClick={handleSubmit}
+            >
+              Log In
+            </button>
+            <button
+              className='auth-form__button demo-login__button'
+              onClick={demoLogin}
+              type='button'
+            >
+              Login as demo user
+            </button>
           </div>
-          <div className='auth__form-group'>
-            <label className='auth__label'>Password</label>
-            <input
-              className='auth__input'
-              type='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button className='auth-form__button' type='submit'>
-            Log In
-          </button>
-          {/* <button
-            className='auth-form__button demo-login__button'
-            onClick={demoLogin}
-            type='button'
-          >
-            Login as demo user
-          </button> */}
-        </div>
-      </form>
-    </>
+        </form>
+      </div>
+    </div>
   );
 }
 

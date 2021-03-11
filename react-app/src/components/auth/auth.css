@@ -1,0 +1,132 @@
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.login__form {
+  display: grid;
+  background-color: #f0881e;
+  height: 100vh;
+  width: 100%;
+}
+.auth__container {
+  background-color: #ffffff;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto;
+  justify-self: center;
+  align-self: center;
+  margin-bottom: 10rem;
+  height: 500px;
+  width: 400px;
+}
+
+.auth__container img {
+  grid-column: 1 / 3;
+  width: 7rem;
+  margin-top: 2rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.auth__tab--active,
+.auth__tab--inactive {
+  display: block;
+  line-height: 3rem;
+  text-align: center;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  outline: none;
+}
+
+.auth__tab--inactive {
+  background-color: #dddddd;
+  color: #777777;
+}
+
+.auth__form {
+  grid-column: 1 / 3;
+  padding: 2rem 2rem 2.5rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.auth__form-group {
+  padding-bottom: 1rem;
+  position: relative;
+  align-items: center;
+}
+
+.auth__input {
+  background-color: rgb(245, 245, 245);
+  border: none;
+  border-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-left: 2px solid #1e86f0;
+  font-weight: 400;
+  padding: 0.75rem 0.75rem 0;
+  width: 100%;
+  height: 3.5rem;
+  outline-color: #1e86f0;
+}
+
+.auth__label {
+  position: absolute;
+  color: #777777;
+  font-weight: 600;
+  font-size: 0.75rem;
+  z-index: 301;
+  top: 0.2rem;
+  left: 0.87rem;
+}
+
+.auth-form__button {
+  display: block;
+  margin: 1rem auto 0;
+  border-radius: 0.25rem;
+  background-color: #1e86f0;
+  border: none;
+  color: #ffffff;
+  font-size: 1.125rem;
+  padding: 0.5rem 2rem;
+  outline: none;
+}
+
+.auth-form__button:hover {
+  background-color: #1f1ef0;
+}
+
+.demo-login__button {
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+  background-color: white;
+  color: #1e86f0;
+}
+
+.demo-login__button:hover {
+  color: #1f1ef0;
+  background-color: white;
+  text-decoration: underline;
+}
+
+#nav__auth-button {
+  display: block;
+  border-radius: 5rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: solid 1px white;
+  color: #ffffff;
+  font-size: 1rem;
+  width: 6rem;
+  height: 2.4rem;
+  white-space: nowrap;
+}
+
+#nav__auth-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

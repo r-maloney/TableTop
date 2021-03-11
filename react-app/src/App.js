@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
+import LoginForm from "./components/auth/LoginForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 import Splash from "./components/Splash";
@@ -34,14 +34,7 @@ function App() {
       />
       <Switch>
         <Route path='/login' exact={true}>
-          <Splash
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-          {/* <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          /> */}
+          <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm
@@ -50,7 +43,10 @@ function App() {
           />
         </Route>
         <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
-          <Home />
+          <Splash
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
