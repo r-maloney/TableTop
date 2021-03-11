@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getBusinesses } from "../../store/business";
 
 const Explore = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(true);
+  // const restaurants = useSelector((state) => state.businesses)
+
+  useEffect(() => {
+    dispatch(getBusinesses());
+  }, [dispatch]);
 
   return (
     <>
@@ -9,6 +17,7 @@ const Explore = () => {
       <div className='explore__container'>
         <div className='explore__category'>
           <h2>Restaurants</h2>
+          {/* {isLoaded && bus} */}
           <div className='explore__business-list'>
             {isLoaded && <div>1</div>}
           </div>
