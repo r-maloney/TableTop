@@ -14,17 +14,27 @@ const removeUser = () => {
   };
 };
 
-export const login = (user) => async (dispatch) => {
-  const { credential, password } = user;
+export const login = (credential, password) => async (dispatch) => {
+  console.log("check", credential, password);
   const response = await fetch("/api/auth/login", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       credential,
       password,
     }),
   });
-  dispatch(setUser(response.data.user));
-  return response;
+  const user = await response.json();
+  console.log(user);
+  if (!user.errors) {
+    console.log("we did it");
+    dispatch(setUser(user));
+  } else {
+    console.log(user.errors);
+  }
+  return user;
 };
 
 export const restoreUser = () => async (dispatch) => {

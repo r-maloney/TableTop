@@ -6,20 +6,27 @@ import { login } from "../../store/session";
 import "./auth.css";
 import logo from "../../images/logos/TTLogoNoBackgroundOrange.jpg";
 
-function LoginForm() {
+function LoginForm({ setAuthenticated }) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e, "hit");
-    setErrors([]);
-    return dispatch(login({ credential, password })).catch((res) => {
-      if (res.data && res.data.errors) setErrors(res.data.errors);
-    });
+    const user = await dispatch(login(credential, password));
+    if (!user.errors) {
+      setAuthenticated(true);
+    } else {
+      setErrors(user.errors);
+    }
   };
+  // e.preventDefault();
+  // console.log(e, "hit");
+  // setErrors([]);
+  // return dispatch(login({ credential, password })).catch((res) => {
+  //   if (res.data && res.data.errors) setErrors(res.data.errors);
+  // });
 
   const demoLogin = () => {
     return dispatch(
@@ -31,6 +38,37 @@ function LoginForm() {
       if (res.data && res.data.errors) setErrors(res.data.errors);
     });
   };
+
+  // const [errors, setErrors] = useState([]);
+  //   const [email, setEmail] = useState("");
+  //   const [password, setPassword] = useState("");
+
+  //   const onLogin = async (e) => {
+  //     e.preventDefault();
+  //     console.log("hit onlogin");
+  //     setShowModal(false);
+  //     const user = await login(email, password);
+  //     if (!user.errors) {
+  //       setAuthenticated(true);
+  //       console.log("set auth true");
+  //     } else {
+  //       setErrors(user.errors);
+  //       console.log("set auth error");
+  //     }
+  //   };
+
+  //   const updateEmail = (e) => {
+  //     setEmail(e.target.value);
+  //   };
+
+  //   const updatePassword = (e) => {
+  //     setPassword(e.target.value);
+  //   };
+
+  //   if (authenticated) {
+  //     return <p>logged in</p>;
+  //     // return <Redirect to='/' />;
+  //   }
 
   return (
     <div className='login__form'>
