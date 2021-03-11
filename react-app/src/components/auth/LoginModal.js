@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import LoginForm from "./LoginForm";
 
-function AuthModal({ authenticated, setAuthenticated }) {
+function LoginModal({ authenticated, setAuthenticated }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -26,4 +26,4 @@ function AuthModal({ authenticated, setAuthenticated }) {
   );
 }
 
-export default AuthModal;
+export default LoginModal;

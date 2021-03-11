@@ -8,9 +8,10 @@ a {
 
 .login__form {
   display: grid;
-  background-color: #f0881e;
-  height: 100vh;
+  background-color: white;
+  height: 100%;
   width: 100%;
+  align-items: center;
 }
 .auth__container {
   background-color: #ffffff;
@@ -20,7 +21,6 @@ a {
   grid-template-rows: auto auto;
   justify-self: center;
   align-self: center;
-  margin-bottom: 10rem;
   height: 500px;
   width: 400px;
 }
