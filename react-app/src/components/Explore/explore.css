@@ -2,6 +2,11 @@ a div {
   color: black;
 }
 
+.explore__root {
+  background-color: #fafafa;
+  /* background-color: #f0881e; */
+}
+
 .explore__container {
   width: 75%;
   margin-left: auto;
@@ -22,6 +27,7 @@ a div {
   box-shadow: 3px 3px 5px rgb(224, 224, 224);
   border: 1px solid rgb(224, 224, 224);
   border-radius: 5px;
+  background-color: white;
 }
 
 .explore__business-card:hover {
@@ -30,6 +36,7 @@ a div {
 
 .business__container {
   width: 14rem;
+  height: 24rem;
   display: grid;
   color: black;
 }

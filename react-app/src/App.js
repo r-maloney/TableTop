@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import SignUpForm from "./components/auth/SignUpForm";
-import LoginForm from "./components/auth/LoginForm";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Splash from "./components/Splash";
 import Navigation from "./components/Navigation";
-import Home from "./components/Home";
 import Explore from "./components/Explore/Explore";
 import Give from "./components/Give/Give";
+import BusinessProfile from "./components/Explore/BusinessProfile";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
@@ -30,38 +27,37 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
       <Navigation
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
       />
       <Switch>
-        <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
+        <Route path='/' exact={true} authenticated={authenticated}>
           <Splash
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path='/explore'
-          exact={true}
-          authenticated={authenticated}
-        >
+        </Route>
+        <Route path='/explore' exact={true} authenticated={authenticated}>
           <Explore />
-        </ProtectedRoute>
-        <ProtectedRoute path='/give' exact={true} authenticated={authenticated}>
+        </Route>
+        <Route path='/give' exact={true} authenticated={authenticated}>
           <Give />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path='/shopping-cart'
+        </Route>
+        <Route path='/shopping-cart' exact={true} authenticated={authenticated}>
+          <ShoppingCart />
+        </Route>
+        <Route
+          path='/explore/:id(\d+)'
           exact={true}
           authenticated={authenticated}
         >
-          <ShoppingCart />
-        </ProtectedRoute>
+          <BusinessProfile />
+        </Route>
         <Route>Page Not Found</Route>
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 
