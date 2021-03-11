@@ -8,9 +8,11 @@ const setBusinesses = (business) => {
 };
 
 export const getBusinesses = () => async (dispatch) => {
+  console.log("CHECK THUNK");
   const res = await fetch("/api/businesses");
   if (res.ok) {
-    const businesses = res.data;
+    const businesses = await res.json();
+    console.log("CHECK BUSINESSES", businesses);
     await dispatch(setBusinesses(businesses));
     return res;
   }
