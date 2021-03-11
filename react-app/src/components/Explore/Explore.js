@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getBusinesses } from "../../store/business";
+import Business from "./Business";
 
 const Explore = () => {
   const dispatch = useDispatch();
@@ -30,9 +31,14 @@ const Explore = () => {
       <div className='explore__container'>
         <div className='explore__category'>
           <h2>Restaurants</h2>
-          {isLoaded && restaurants.map((r) => <div>{r.name}</div>)}
+
           <div className='explore__business-list'>
-            {isLoaded && <div>1</div>}
+            {isLoaded &&
+              restaurants.map((business) => (
+                <div className='explore__business-card'>
+                  <Business business={business} />
+                </div>
+              ))}
           </div>
         </div>
       </div>

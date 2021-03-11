@@ -1,0 +1,60 @@
+a div {
+  color: black;
+}
+
+.explore__container {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: #878787; */
+}
+
+.explore__business-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.explore__business-card {
+  margin: 1rem;
+  /* background-color: #878787; */
+  box-shadow: 3px 3px 5px rgb(224, 224, 224);
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+}
+
+.explore__business-card:hover {
+  box-shadow: 0px 0px 5px rgb(107, 107, 107);
+}
+
+.business__container {
+  width: 14rem;
+  display: grid;
+  color: black;
+}
+
+.business__name {
+  color: black;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.business__img {
+  width: 100%;
+}
+
+.business__img img {
+  width: 100%;
+}
+
+.business__rating {
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
+  color: #878787;
+}
+
+.business__description {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
