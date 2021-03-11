@@ -28,22 +28,33 @@
 }
 
 .splash__header {
-  background-image: url("../../images/wood_background.jpg");
-  height: 20rem;
-  background-size: cover;
+  /* background-image: url("../../images/wood_background.jpg"); */
+  /* background-size: cover; */
+  height: 40rem;
+  background-color: #f0881e;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+.splash__blur {
+  /* backdrop-filter: blur(3px); //Used for background photo if needed */
+  /* height: 100%; */
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
 }
 
-.splash__blur {
-  backdrop-filter: blur(3px);
-  height: 100%;
+.splash__wave {
+  align-self: end;
 }
 
 .splash__title {
   color: white;
-  font-size: 2rem;
+  font-size: 4rem;
   display: grid;
   text-align: center;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
+  align-self: end;
 }
 
 .splash__title h1 {
