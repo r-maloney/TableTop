@@ -40,11 +40,6 @@ const Splash = ({ authenticated, setAuthenticated }) => {
       </div>
       <div className='splash__steps'>
         <div className='splash__step'>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-            // setShowModal={setShowModal}
-          />
           <div>
             <h2>Step 1</h2>
             <p>Select a charity you would like to benefit</p>

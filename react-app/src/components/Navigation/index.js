@@ -2,16 +2,19 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import logo from "../../images/logos/TTLogo.png";
-import AuthModal from "../auth/AuthModal";
+import LoginModal from "../auth/LoginModal";
+import SignUpModal from "../auth/SignUpModal";
 import "./navigation.css";
 
 const Navigation = ({ authenticated, setAuthenticated }) => {
   return (
     <div className='nav__container'>
-      <div className='nav__logo-container'>
-        <img className='nav__logo' src={logo} alt='TT logo'></img>
-        <h2>TABLETOP</h2>
-      </div>
+      <NavLink to='/' exact={true} activeClassName='active'>
+        <div className='nav__logo-container'>
+          <img className='nav__logo' src={logo} alt='TT logo'></img>
+          <h2>TABLETOP</h2>
+        </div>
+      </NavLink>
       <div className='nav__browse'>
         {authenticated && (
           <ul>
@@ -34,23 +37,17 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
       <div className='nav__links'>
         <ul>
           <li>
-            <NavLink to='/login' exact={true} activeClassName='active'>
-              <AuthModal
-                authenticated={authenticated}
-                setAuthenticated={setAuthenticated}
-              />
-            </NavLink>
+            <LoginModal
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
           </li>
           <li>
-            <NavLink to='/sign-up' exact={true} activeClassName='active'>
-              Sign Up
-            </NavLink>
+            <SignUpModal
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
           </li>
-          {/* <li>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
-            </NavLink>
-          </li> */}
           <li>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </li>

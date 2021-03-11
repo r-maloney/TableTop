@@ -5,7 +5,7 @@ import { login } from "../../store/session";
 import "./auth.css";
 import logo from "../../images/logos/TTLogoNoBackgroundOrange.jpg";
 
-function LoginForm({ setAuthenticated }) {
+function LoginForm({ setAuthenticated, setShowModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [credential, setCredential] = useState("");
@@ -17,6 +17,7 @@ function LoginForm({ setAuthenticated }) {
     const user = await dispatch(login(credential, password));
     if (!user.errors) {
       setAuthenticated(true);
+      setShowModal(false);
       history.push("/");
     } else {
       setErrors(user.errors);
@@ -27,6 +28,7 @@ function LoginForm({ setAuthenticated }) {
     const credential = "demo@aa.io";
     const password = "password";
     const res = await dispatch(login(credential, password));
+    setShowModal(false);
     history.push("/");
   };
 
