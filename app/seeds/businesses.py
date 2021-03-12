@@ -52,7 +52,7 @@ def seed_businesses():
                       latitude=fake.latitude()	,)
     fifth = Business(name="Lush Lashes"	,
                      description=fake.catch_phrase()	,
-                     img_url="https: // marketplace.canva.com/EAD65eU2Sd8/3/0/1600w/canva-green-and-white-beauty-logo-_hUN_tfnBAs.jpg"	,
+                     img_url="https://marketplace.canva.com/EAD65eU2Sd8/3/0/1600w/canva-green-and-white-beauty-logo-_hUN_tfnBAs.jpg"	,
                      rating=3.7	,
                      type="Retail"	,
                      address=fake.street_address()	,

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Business = ({ business }) => {
   return (
     <div className='business__container'>
-      <NavLink to={`/business/${business.id}`}>
+      <NavLink to={`/explore/${business.id}`}>
         <img
           className='business__img'
           src={business.img_url}

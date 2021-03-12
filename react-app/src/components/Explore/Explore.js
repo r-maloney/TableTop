@@ -26,7 +26,7 @@ const Explore = () => {
   }, [restaurants]);
 
   return (
-    <>
+    <div className='explore__root'>
       <h1>Explore</h1>
       <div className='explore__container'>
         <div className='explore__category'>
@@ -35,14 +35,14 @@ const Explore = () => {
           <div className='explore__business-list'>
             {isLoaded &&
               restaurants.map((business) => (
-                <div className='explore__business-card'>
+                <div key={business.id} className='explore__business-card'>
                   <Business business={business} />
                 </div>
               ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
