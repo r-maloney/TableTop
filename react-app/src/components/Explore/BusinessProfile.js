@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getBusinesses } from "../../store/business";
@@ -13,14 +13,12 @@ const BusinessProfile = () => {
   }, [dispatch]);
 
   const business = useSelector((state) => state.business[id]);
-  console.log(business, id);
 
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (business) {
       setIsLoaded(true);
-      console.log(business);
     }
   }, [business]);
 

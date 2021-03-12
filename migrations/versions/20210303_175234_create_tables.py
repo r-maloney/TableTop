@@ -62,7 +62,7 @@ def upgrade():
                     sa.Column('description', sa.String(
                         length=2000), nullable=False),
                     sa.Column('img_url', sa.String(
-                        length=255), nullable=False),
+                        length=255), nullable=True),
                     sa.Column('price', sa.Float(), nullable=False),
                     sa.Column('donation_percentage',
                               sa.Float(), nullable=False),
