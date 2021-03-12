@@ -12,7 +12,7 @@ const BusinessProfile = () => {
     dispatch(getBusinesses());
   }, [dispatch]);
 
-  const business = useSelector((state) => state.business[id]);
+  const business = useSelector((state) => state.business[id - 1]);
 
   const [isLoaded, setIsLoaded] = useState(false);
 
