@@ -24,6 +24,8 @@ class Business(db.Model):
     items = db.relationship("Item", back_populates="business")
 
     def to_dict(self):
+        items = [item.to_dict() for item in self.items]
+
         return {
             "id": self.id,
             "name": self.name,
@@ -31,4 +33,5 @@ class Business(db.Model):
             "img_url": self.img_url,
             "rating": self.rating,
             "type": self.type,
+            "items": items
         }

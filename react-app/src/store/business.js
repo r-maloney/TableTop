@@ -12,6 +12,7 @@ export const getBusinesses = () => async (dispatch) => {
   if (res.ok) {
     const { businesses } = await res.json();
     await dispatch(setBusinesses(businesses));
+    console.log(businesses);
     return res;
   }
 };

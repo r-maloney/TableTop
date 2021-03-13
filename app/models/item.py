@@ -30,5 +30,5 @@ class Item(db.Model):
             "img_url": self.img_url,
             "price": self.price,
             "donation_percentage": self.donation_percentage,
-            "business": self.business.to_dict(),
+            # "business": self.business.to_dict(),
         }
