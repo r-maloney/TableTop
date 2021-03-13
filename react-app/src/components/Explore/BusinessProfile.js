@@ -39,7 +39,7 @@ const BusinessProfile = () => {
       <div className='business__rating'>Rating: {business.rating}</div>
       <div className='business__description'>{business.description}</div>
       <div className='business__menu'>Menu</div>
-      <Menu id={id} />
+      <Menu business={business} />
     </div>
   );
 };
