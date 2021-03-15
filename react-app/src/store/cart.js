@@ -8,6 +8,7 @@ export const setCart = (cart) => {
 };
 
 export const updateCart = (cart) => async (dispatch) => {
+  console.log(cart);
   await dispatch(setCart(cart));
   console.log(cart);
   return cart;

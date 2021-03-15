@@ -31,15 +31,11 @@ const Menu = ({ business }) => {
     if (newCart[item.id]) {
       newCart[item.id].count += 1;
       setCart(newCart);
-      // console.log("item in cart");
     } else {
       newCart[item.id] = { count: 1, item: item };
       setCart(newCart);
     }
-    console.log(cart);
-    // setCart(...cart, item); //Should onClick set state and then useEffect to handle add to cart?
-    // let res = await updateCart(cart);
-    // console.log(res);
+    await dispatch(updateCart(newCart));
   };
 
   return (

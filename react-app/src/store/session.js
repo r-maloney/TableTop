@@ -29,7 +29,7 @@ export const login = (credential, password) => async (dispatch) => {
   const user = await response.json();
   console.log(user);
   if (!user.errors) {
-    console.log("we did it");
+    console.log("*********************we did it");
     dispatch(setUser(user));
   } else {
     console.log(user.errors);
@@ -38,9 +38,17 @@ export const login = (credential, password) => async (dispatch) => {
 };
 
 export const restoreUser = () => async (dispatch) => {
-  const res = await fetch("/api/session");
-  dispatch(setUser(res.data.user));
-  return res;
+  const res = await fetch("/api/auth/", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const user = await res.json();
+  if (res.ok) {
+    dispatch(setUser(user));
+  }
+  return user;
 };
 
 export const authenticate = () => async (dispatch) => {
