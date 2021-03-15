@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { userCart } from "../../store/session";
 import "../Explore/explore.css";
 
 const ShoppingCart = () => {
   // useEffect(() => { dispatch(getCart)})
+  const dispatch = useDispatch();
   const history = useHistory();
   const [loaded, setLoaded] = useState(false);
+  // const [count, setCount] = useState(0);
 
   const user = useSelector((state) => state.session.user);
   // if (user.cart) {
@@ -35,6 +38,21 @@ const ShoppingCart = () => {
     history.push("/thank-you");
   };
 
+  const increaseCount = (id) => {
+    // const newCount = count + 1;
+    // setCount(newCount);
+    // let newId = parseInt(id);
+    // let cart = user.cart;
+    // console.log(cart[1], cart[newId], cart[id], cart.id, cart.newId);
+    // console.log(user.cart, user.cart[id]);
+    // let cart = user.cart[item_id]["count"]++;
+    // dispatch(userCart(user, cart));
+  };
+  const decreaseCount = (item_id) => {
+    // let cart = user.cart[item_id];
+    // dispatch(userCart(user, cart));
+  };
+
   return (
     <div className='cart__container'>
       <h1>Shopping Cart</h1>
@@ -43,9 +61,19 @@ const ShoppingCart = () => {
           cartArr.map((item) => (
             <div className='cart__item'>
               <div className='cart__name'>{item.item.name}</div>
-              <button className='cart__minus'>-</button>
+              <button
+                className='cart__minus'
+                onClick={() => decreaseCount(item.id)}
+              >
+                -
+              </button>
               <div className='cart__count'>{item.count}</div>
-              <button className='cart__plus'>+</button>
+              <button
+                className='cart__plus'
+                onClick={() => increaseCount(item.id)}
+              >
+                +
+              </button>
             </div>
           ))}
       </div>

@@ -27,7 +27,7 @@ const Explore = () => {
 
   return (
     <div className='explore__root'>
-      <h1>Explore</h1>
+      <h1></h1>
       <div className='explore__container'>
         <div className='explore__category'>
           <h2>Restaurants</h2>
