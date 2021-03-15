@@ -28,8 +28,9 @@ function LoginForm({ setAuthenticated, setShowModal }) {
     const credential = "demo@aa.io";
     const password = "password";
     await dispatch(login(credential, password));
+    setAuthenticated(true);
     setShowModal(false);
-    history.push("/");
+    history.push("/explore");
   };
 
   //   if (authenticated) {

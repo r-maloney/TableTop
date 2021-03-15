@@ -17,41 +17,41 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
       </NavLink>
       <div className='nav__browse'>
         {authenticated && (
-          <ul>
-            <li>
-              <NavLink to='/explore' exact={true} activeClassName='active'>
-                Explore
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to='/give' exact={true} activeClassName='active'>
-                Give
-              </NavLink>
-            </li>
+          <>
+            <NavLink to='/explore' exact={true} activeClassName='active'>
+              Explore
+            </NavLink>
+            <NavLink to='/give' exact={true} activeClassName='active'>
+              Give
+            </NavLink>
             <NavLink to='/shopping-cart' exact={true} activeClassName='active'>
               Shopping Cart
             </NavLink>
-          </ul>
+          </>
         )}
       </div>
       <div className='nav__links'>
-        <ul>
-          <li>
-            <LoginModal
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </li>
-          <li>
-            <SignUpModal
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </li>
-          <li>
+        {authenticated && (
+          <div>
             <LogoutButton setAuthenticated={setAuthenticated} />
-          </li>
-        </ul>
+          </div>
+        )}
+        {!authenticated && (
+          <>
+            <div>
+              <LoginModal
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              />
+            </div>
+            <div>
+              <SignUpModal
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              />
+            </div>
+          </>
+        )}
       </div>
       {/* <ul>
         <li>

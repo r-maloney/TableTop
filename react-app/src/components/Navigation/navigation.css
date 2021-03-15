@@ -1,6 +1,6 @@
 .nav__container {
   display: grid;
-  grid-template: 4rem / 2fr 3fr 3fr;
+  grid-template: 4rem / 2fr 2fr 4fr;
   overflow: hidden;
 }
 
@@ -9,6 +9,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: auto auto;
+  padding-top: 0.5rem;
 }
 .nav__logo {
   align-self: center;
@@ -20,9 +21,10 @@
 .nav__logo-container h2 {
   align-self: center;
   padding-left: 0;
+  font-size: 1.4rem;
 }
 
-.nav__links ul {
+.nav__links {
   display: flex;
   height: 100%;
   flex-direction: row;
@@ -32,7 +34,33 @@
   list-style-type: none;
 }
 
-.nav__links li {
+.nav__links div {
   padding-right: 1rem;
   text-decoration: none;
+}
+
+.nav__links button {
+  height: 2rem;
+  width: 7rem;
+  border-radius: 0.5rem;
+  background-color: #1e86f0;
+  color: white;
+  border: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.nav__browse {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.nav__browse a {
+  color: rgb(66, 65, 65);
+  align-self: center;
+}
+
+.nav__browse a:hover {
+  text-decoration: underline;
 }

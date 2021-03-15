@@ -16,14 +16,14 @@ const Splash = ({ authenticated, setAuthenticated }) => {
           <div className='splash__title'>
             <h1>Welcome to TableTop</h1>
             <p>Buy online and benefit charity</p>
-            <input className='splash__input' placeholder='Enter your email' />
+            {/* <input className='splash__input' placeholder='Enter your email' />
             <button
               className='splash__email-btn'
               onClick={() => setRegistration(!registration)}
             >
               Submit
             </button>
-            {registration && <SignUpForm />}
+            {registration && <SignUpForm />} */}
           </div>
         </div>
         <svg
