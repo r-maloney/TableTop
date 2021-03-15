@@ -27,7 +27,7 @@ function LoginForm({ setAuthenticated, setShowModal }) {
   const demoLogin = async () => {
     const credential = "demo@aa.io";
     const password = "password";
-    const res = await dispatch(login(credential, password));
+    await dispatch(login(credential, password));
     setShowModal(false);
     history.push("/");
   };

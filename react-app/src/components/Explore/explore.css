@@ -65,3 +65,9 @@ a div {
   padding: 0.5rem;
   font-size: 1.2rem;
 }
+
+.menu__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}

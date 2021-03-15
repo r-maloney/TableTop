@@ -1,8 +1,8 @@
-const SET_BUSINESS = "item/setItem";
+const SET_ITEM = "item/setItem";
 
 const setItems = (item) => {
   return {
-    type: SET_BUSINESS,
+    type: SET_ITEM,
     payload: item,
   };
 };
@@ -21,7 +21,7 @@ const initialState = { item: null };
 
 const itemReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_BUSINESS:
+    case SET_ITEM:
       return { ...action.payload };
     default:
       return state;
