@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     charity = db.relationship("Charity", back_populates="users")
     # orders = db.relationship("Order", back_populates="users")
     orders = db.relationship(
-        "Order", secondary=user_orders, back_populates="users")
+        "Order", secondary=user_orders, back_populates="user")
 
     @property
     def password(self):
