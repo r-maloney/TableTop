@@ -20,11 +20,7 @@ function App() {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
-        const res = await dispatch(getCart(user));
-        // if (res === "None") {
-        //   console.log("No cart- dispatch create cart");
-        //   dispatch(createCart(user));
-        // }
+        await dispatch(getCart(user));
       }
       setLoaded(true);
     })();

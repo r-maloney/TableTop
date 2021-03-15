@@ -30,14 +30,18 @@ export const createCart = (user) => async (dispatch) => {
 };
 
 export const getCart = (user) => async (dispatch) => {
-  const res = await fetch(`/api/cart/${user.id}`);
+  // const res = await fetch(`/api/cart/${user.id}`);
+  const res = await fetch(`/api/cart/${2}`);
   console.log("Hiting cart store", res);
   if (res.ok) {
-    console.log(res);
     const cart = await res.json();
     console.log(cart);
-    await dispatch(setCart(cart));
-    return res;
+    if (cart.cart.id) {
+      await dispatch(setCart(cart));
+      return res;
+    } else {
+      await dispatch(createCart(user));
+    }
   }
 };
 
