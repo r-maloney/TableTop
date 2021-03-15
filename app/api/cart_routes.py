@@ -7,6 +7,9 @@ cart_routes = Blueprint('cart', __name__)
 
 @cart_routes.route('/<int:id>')
 def cart(id):
-    order = Order.query.filter_by(user_id=id, inProgress=True).first()
+    order = Order.query.filter_by(user_id=id, in_progress=True).first()
     print("*****************************", order)
-    return {order}
+    if order:
+        return {order.to_dict()}
+    else:
+        return {"cart": {}}
