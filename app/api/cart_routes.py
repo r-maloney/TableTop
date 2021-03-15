@@ -43,8 +43,10 @@ def update_cart(id):
     # itemList = Item.query.filter(Item.id.in_(items)).all()
     print("*******************", itemsList)
     order = Order.query.get(id)
+
     # for item in items:
     #     order.items.append(item)
     order.items.extend(itemsList)
+    print('item_count', order.items)
     db.session.commit()
     return order.to_dict()
