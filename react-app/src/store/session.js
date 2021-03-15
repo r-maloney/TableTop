@@ -82,6 +82,13 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
+export const userCharity = (user, id) => async (dispatch) => {
+  const response = await fetch(`/api/give/${id}`);
+  const charity = await response.json();
+  user.charity = charity;
+  dispatch(setUser(user));
+};
+
 export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
     headers: {
