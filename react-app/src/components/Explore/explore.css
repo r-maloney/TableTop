@@ -82,7 +82,7 @@ a div {
 
 .charity__container {
   width: 14rem;
-  height: 24rem;
+  height: 20rem;
   display: grid;
   color: black;
   margin: 1rem;
@@ -94,5 +94,21 @@ a div {
 }
 
 .charity__container img {
+  max-height: 8rem;
   width: 100%;
+}
+
+.charity__description {
+  height: 6rem;
+  color: rgb(100, 100, 100);
+  font-size: 1rem;
+  overflow-y: scroll;
+  max-height: 6rem;
+}
+
+.charity__container button {
+  background-color: #1e86f0;
+  color: white;
+  font-size: 1.5rem;
+  height: 3rem;
 }

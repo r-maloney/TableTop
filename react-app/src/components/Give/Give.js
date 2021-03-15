@@ -19,6 +19,7 @@ const Give = () => {
   }
 
   const [isLoaded, setIsLoaded] = useState(false);
+  const [selected, setSelected] = useState();
 
   useEffect(() => {
     if (charities) {
@@ -42,7 +43,9 @@ const Give = () => {
             ></img>
             <div className='charity__name'>{charity.name}</div>
             <div className='charity__description'>{charity.description}</div>
-            <button>Select</button>
+            <button onClick={() => setSelected(charity.id)}>
+              {(charity.id = selected ? "Selected" : "Select Me")}
+            </button>
           </div>
         ))}
     </div>

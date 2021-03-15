@@ -26,4 +26,5 @@ class Charity(db.Model):
             "id": self.id,
             "name": self.name,
             "img_url": self.img_url,
+            "description": self.description
         }
