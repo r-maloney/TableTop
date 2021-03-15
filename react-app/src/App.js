@@ -15,12 +15,15 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
+  const [orderId, setOrderId] = useState();
+
   useEffect(() => {
     (async () => {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
-        await dispatch(getCart(user));
+        const orderId = await dispatch(getCart(user));
+        setOrderId(orderId);
       }
       setLoaded(true);
     })();
@@ -57,7 +60,7 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <BusinessProfile />
+          <BusinessProfile orderId={orderId} />
         </Route>
         <Route>Page Not Found</Route>
       </Switch>

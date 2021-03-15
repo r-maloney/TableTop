@@ -7,10 +7,19 @@ export const setCart = (cart) => {
   };
 };
 
-export const updateCart = (cart) => async (dispatch) => {
+export const updateCart = (cart, orderId) => async (dispatch) => {
+  console.log("HIT UPDATE CART", cart);
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify({ in_progress: true }),
+  };
+  const res = await fetch(`/api/cart/${orderId}`, options);
+  const json = await res.json();
   console.log(cart);
   await dispatch(setCart(cart));
-  console.log(cart);
   return cart;
 };
 
@@ -24,9 +33,8 @@ export const createCart = (user) => async (dispatch) => {
   };
   const res = await fetch(`/api/cart/${user.id}`, options);
   const json = await res.json();
-  console.log(json);
   dispatch(setCart({}));
-  return res;
+  return json.id;
 };
 
 export const getCart = (user) => async (dispatch) => {
@@ -38,9 +46,10 @@ export const getCart = (user) => async (dispatch) => {
     console.log(cart);
     if (cart.cart.id) {
       await dispatch(setCart(cart));
-      return res;
+      return cart.cart.id;
     } else {
-      await dispatch(createCart(user));
+      const id = await dispatch(createCart(user));
+      return id;
     }
   }
 };

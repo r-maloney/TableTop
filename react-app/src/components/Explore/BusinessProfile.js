@@ -5,7 +5,7 @@ import { getBusinesses } from "../../store/business";
 import Menu from "./Menu";
 import "./explore.css";
 
-const BusinessProfile = () => {
+const BusinessProfile = ({ orderId }) => {
   let { id } = useParams();
   id -= 1;
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const BusinessProfile = () => {
       <div className='business__rating'>Rating: {business.rating}</div>
       <div className='business__description'>{business.description}</div>
       <div className='business__menu'>Menu</div>
-      <Menu business={business} />
+      <Menu business={business} orderId={orderId} />
     </div>
   );
 };

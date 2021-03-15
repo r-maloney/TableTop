@@ -22,4 +22,15 @@ def new_cart(id):
     new_order = Order(user_id=user_id, in_progress=in_progress)
     db.session.add(new_order)
     db.session.commit()
-    return(data)
+    return new_order.to_dict()
+
+
+@cart_routes.route('/<int:id>', methods=['PUT'])
+def update_cart(id):
+    print("*******************", id)
+    data = request.get_json()
+    print("*******************", data)
+    order = Order.query.get(id)
+    # order.items.append
+    db.session.commit()
+    return order.to_dict()
