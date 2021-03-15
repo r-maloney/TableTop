@@ -53,13 +53,15 @@
   font-size: 4rem;
   display: grid;
   text-align: center;
-  /* padding-top: 2rem; */
+  padding-bottom: 6rem;
   align-self: end;
 }
 
 .splash__title h1 {
 }
 .splash__title p {
+  padding-top: 1rem;
+  font-size: 2rem;
 }
 
 .splash__input {
@@ -78,7 +80,7 @@
 .splash__steps {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding-top: 3rem;
+  padding-top: 0rem;
   margin: auto;
   width: 80%;
 }
@@ -89,6 +91,7 @@
   height: auto;
   text-align: center;
   justify-content: center;
+  color: rgb(100, 100, 100);
 }
 
 .splash__step h2 {

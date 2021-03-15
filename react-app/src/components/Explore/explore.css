@@ -71,3 +71,44 @@ a div {
   grid-template-columns: 1fr 1fr;
   width: 100%;
 }
+
+.charity__list {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.charity__container {
+  width: 14rem;
+  height: 20rem;
+  display: grid;
+  color: black;
+  margin: 1rem;
+  /* background-color: #878787; */
+  box-shadow: 3px 3px 5px rgb(224, 224, 224);
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+  background-color: white;
+}
+
+.charity__container img {
+  max-height: 8rem;
+  width: 100%;
+}
+
+.charity__description {
+  height: 6rem;
+  color: rgb(100, 100, 100);
+  font-size: 1rem;
+  overflow-y: scroll;
+  max-height: 6rem;
+}
+
+.charity__container button {
+  background-color: #1e86f0;
+  color: white;
+  font-size: 1.5rem;
+  height: 3rem;
+}
