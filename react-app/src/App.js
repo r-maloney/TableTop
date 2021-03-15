@@ -8,6 +8,7 @@ import Explore from "./components/Explore/Explore";
 import Give from "./components/Give/Give";
 import BusinessProfile from "./components/Explore/BusinessProfile";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import ThankYou from "./components/ThankYou";
 import { getCart, createCart } from "./store/cart";
 
 function App() {
@@ -61,6 +62,9 @@ function App() {
           authenticated={authenticated}
         >
           <BusinessProfile orderId={orderId} />
+        </Route>
+        <Route path='/thank-you'>
+          <ThankYou />
         </Route>
         <Route>Page Not Found</Route>
       </Switch>
