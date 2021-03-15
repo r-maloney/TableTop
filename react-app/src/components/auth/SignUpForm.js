@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import { signUp } from "../../services/auth";
 import "./auth.css";
 import logo from "../../images/logos/TTLogoNoBackgroundOrange.jpg";

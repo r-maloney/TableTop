@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Splash from "./components/Splash";
@@ -11,10 +12,12 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
-      const user = await authenticate();
+      const user = await dispatch(authenticate());
+      console.log(user);
       if (!user.errors) {
         setAuthenticated(true);
       }
