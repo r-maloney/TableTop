@@ -8,6 +8,7 @@ import Explore from "./components/Explore/Explore";
 import Give from "./components/Give/Give";
 import BusinessProfile from "./components/Explore/BusinessProfile";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import { getCart } from "./store/cart";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -20,6 +21,7 @@ function App() {
       console.log(user);
       if (!user.errors) {
         setAuthenticated(true);
+        dispatch(getCart(user));
       }
       setLoaded(true);
     })();

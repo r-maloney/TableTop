@@ -14,15 +14,17 @@ export const updateCart = (cart) => async (dispatch) => {
   return cart;
 };
 
-// export const getCart = () => async (dispatch) => {
-//   const res = await fetch("/api/cart");
-//   if (res.ok) {
-//     const { cart } = await res.json();
-//     await dispatch(setCart(cart));
-//     console.log(cart);
-//     return res;
-//   }
-// };
+export const getCart = (user) => async (dispatch) => {
+  const res = await fetch(`/api/cart/${user.id}`);
+  console.log("Hiting cart store");
+  if (res.ok) {
+    console.log(res);
+    const { cart } = await res.json();
+    await dispatch(setCart(cart));
+    console.log(cart);
+    return res;
+  }
+};
 
 const initialState = {};
 
