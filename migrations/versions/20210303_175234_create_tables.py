@@ -88,7 +88,6 @@ def upgrade():
                     sa.Column('item_id', sa.Integer(), nullable=False),
                     sa.ForeignKeyConstraint(['item_id'], ['items.id'], ),
                     sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
-                    sa.PrimaryKeyConstraint('order_id', 'item_id')
                     )
     op.create_table('user_orders',
                     sa.Column('user_id', sa.Integer(), nullable=False),

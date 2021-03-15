@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Order
+from app.models import db, Order, Item
 
 cart_routes = Blueprint('cart', __name__)
 
@@ -29,8 +29,22 @@ def new_cart(id):
 def update_cart(id):
     print("*******************", id)
     data = request.get_json()
-    print("*******************", data)
+
+    # items = [[item['item']
+    #           for x in range(1, item['count'])] for item in data]
+    items = []
+    itemsList = []
+    for item in data:
+        for x in range(0, item['count']):
+            itemsList.append(Item.query.filter(
+                Item.id == item['item']['id']).first())
+            # items.append(item['item']['id'])
+
+    # itemList = Item.query.filter(Item.id.in_(items)).all()
+    print("*******************", itemsList)
     order = Order.query.get(id)
-    # order.items.append
+    # for item in items:
+    #     order.items.append(item)
+    order.items.extend(itemsList)
     db.session.commit()
     return order.to_dict()

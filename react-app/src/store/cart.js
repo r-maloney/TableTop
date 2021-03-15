@@ -9,12 +9,13 @@ export const setCart = (cart) => {
 
 export const updateCart = (cart, orderId) => async (dispatch) => {
   console.log("HIT UPDATE CART", cart);
+  const items = Object.values(cart);
   const options = {
     method: "PUT",
     headers: {
       "Content-Type": "Application/json",
     },
-    body: JSON.stringify({ in_progress: true }),
+    body: JSON.stringify(items),
   };
   const res = await fetch(`/api/cart/${orderId}`, options);
   const json = await res.json();
