@@ -8,18 +8,22 @@ import Explore from "./components/Explore/Explore";
 import Give from "./components/Give/Give";
 import BusinessProfile from "./components/Explore/BusinessProfile";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import { getCart, createCart } from "./store/cart";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
+  const [orderId, setOrderId] = useState();
+
   useEffect(() => {
     (async () => {
       const user = await dispatch(authenticate());
-      console.log(user);
       if (!user.errors) {
         setAuthenticated(true);
+        const orderId = await dispatch(getCart(user));
+        setOrderId(orderId);
       }
       setLoaded(true);
     })();
@@ -56,7 +60,7 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <BusinessProfile />
+          <BusinessProfile orderId={orderId} />
         </Route>
         <Route>Page Not Found</Route>
       </Switch>

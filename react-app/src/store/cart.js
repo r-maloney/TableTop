@@ -7,22 +7,53 @@ export const setCart = (cart) => {
   };
 };
 
-export const updateCart = (cart) => async (dispatch) => {
+export const updateCart = (cart, orderId) => async (dispatch) => {
+  console.log("HIT UPDATE CART", cart);
+  const items = Object.values(cart);
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify(items),
+  };
+  const res = await fetch(`/api/cart/${orderId}`, options);
+  const json = await res.json();
   console.log(cart);
   await dispatch(setCart(cart));
-  console.log(cart);
   return cart;
 };
 
-// export const getCart = () => async (dispatch) => {
-//   const res = await fetch("/api/cart");
-//   if (res.ok) {
-//     const { cart } = await res.json();
-//     await dispatch(setCart(cart));
-//     console.log(cart);
-//     return res;
-//   }
-// };
+export const createCart = (user) => async (dispatch) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify({ in_progress: true, user_id: user.id }),
+  };
+  const res = await fetch(`/api/cart/${user.id}`, options);
+  const json = await res.json();
+  dispatch(setCart({}));
+  return json.id;
+};
+
+export const getCart = (user) => async (dispatch) => {
+  // const res = await fetch(`/api/cart/${user.id}`);
+  const res = await fetch(`/api/cart/${2}`);
+  console.log("Hiting cart store", res);
+  if (res.ok) {
+    const cart = await res.json();
+    console.log(cart);
+    if (cart.cart.id) {
+      await dispatch(setCart(cart));
+      return cart.cart.id;
+    } else {
+      const id = await dispatch(createCart(user));
+      return id;
+    }
+  }
+};
 
 const initialState = {};
 

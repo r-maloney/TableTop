@@ -1,11 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getItems } from "../../store/item";
 import { updateCart } from "../../store/cart";
 import "./explore.css";
 
-const Menu = ({ business }) => {
+const Menu = ({ business, orderId }) => {
   const dispatch = useDispatch();
+  // const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getItems());
@@ -35,7 +36,8 @@ const Menu = ({ business }) => {
       newCart[item.id] = { count: 1, item: item };
       setCart(newCart);
     }
-    await dispatch(updateCart(newCart));
+    const id = await dispatch(updateCart(newCart, orderId));
+    console.log(id);
   };
 
   return (
