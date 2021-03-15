@@ -82,6 +82,31 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
+export const userCharity = (user, id) => async (dispatch) => {
+  // user.charity_id = id;
+  // const options = {
+  //   method: "PUT",
+  //   headers: {
+  //     "Content-Type": "Application/json",
+  //   },
+  //   body: JSON.stringify(user),
+  // };
+  // const res = await fetch(`/api/user/${user.id}`, options);
+  // dispatch(setUser(user));
+  // return user;
+  const response = await fetch(`/api/give/${id}`);
+  const charity = await response.json();
+  user.charity = charity;
+  dispatch(setUser(user));
+  return user;
+};
+
+export const userCart = (user, cart) => async (dispatch) => {
+  user.cart = cart;
+  dispatch(setUser(user));
+  return user;
+};
+
 export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
     headers: {

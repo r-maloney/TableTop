@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getCharities } from "../../store/charity";
+import { userCharity } from "../../store/session";
 import "../Explore/explore.css";
 
 const Give = () => {
@@ -13,6 +14,8 @@ const Give = () => {
   // let businesses = useSelector((state) => state.business);
   let charitiesObject = useSelector((state) => state.charities);
   let charities = Object.values(charitiesObject);
+
+  let user = useSelector((state) => state.session.user);
 
   if (charities) {
     console.log(charities);
@@ -31,6 +34,12 @@ const Give = () => {
     return null;
   }
 
+  const handleSelected = async (id) => {
+    user = await dispatch(userCharity(user, id));
+    console.log(id);
+    setSelected(id);
+  };
+
   return (
     <div className='charity__list'>
       {isLoaded &&
@@ -43,8 +52,8 @@ const Give = () => {
             ></img>
             <div className='charity__name'>{charity.name}</div>
             <div className='charity__description'>{charity.description}</div>
-            <button onClick={() => setSelected(charity.id)}>
-              {(charity.id = selected ? "Selected" : "Select Me")}
+            <button onClick={() => handleSelected(charity.id)}>
+              {charity.id === selected ? "Selected" : "Select Me"}
             </button>
           </div>
         ))}

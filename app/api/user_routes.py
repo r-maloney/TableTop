@@ -17,3 +17,14 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def update_user(id):
+    user = User.query.get(id)
+    data = request.get_json()
+    charityId = data['charity_id']
+    user[charity_id] = charityId
+    db.session.commit()
+    return user.to_dict()

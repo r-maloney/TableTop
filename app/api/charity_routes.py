@@ -9,3 +9,9 @@ charity_routes = Blueprint('charities', __name__)
 def charities():
     charities = Charity.query.all()
     return {"charities": [charity.to_dict() for charity in charities]}
+
+
+@charity_routes.route('/<int:id>')
+def charity(id):
+    charity = Charity.query.filter_by(id=id).first()
+    return jsonify(charity.to_dict())

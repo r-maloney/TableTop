@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getItems } from "../../store/item";
 import { updateCart } from "../../store/cart";
+import { userCart } from "../../store/session";
 import "./explore.css";
 
 const Menu = ({ business, orderId }) => {
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getItems());
@@ -27,17 +28,30 @@ const Menu = ({ business, orderId }) => {
     return null;
   }
 
+  // const addToCart = async (item) => {
+  //   let newCart = { ...cart };
+  //   if (newCart[item.id]) {
+  //     newCart[item.id].count += 1;
+  //     setCart(newCart);
+  //   } else {
+  //     newCart[item.id] = { count: 1, item: item };
+  //     setCart(newCart);
+  //   }
+  //   const id = await dispatch(updateCart(newCart, orderId));
+  //   console.log(id);
+  // };
+
   const addToCart = async (item) => {
-    let newCart = { ...cart };
-    if (newCart[item.id]) {
-      newCart[item.id].count += 1;
-      setCart(newCart);
+    // let newCart = { ...cart };
+    if (cart[item.id]) {
+      cart[item.id].count += 1;
+      setCart(cart);
     } else {
-      newCart[item.id] = { count: 1, item: item };
-      setCart(newCart);
+      cart[item.id] = { count: 1, item: item };
+      setCart(cart);
     }
-    const id = await dispatch(updateCart(newCart, orderId));
-    console.log(id);
+    const res = await dispatch(userCart(user, cart));
+    console.log(res);
   };
 
   return (
@@ -45,10 +59,12 @@ const Menu = ({ business, orderId }) => {
       <div className='menu__container'>
         {items.map((item) => (
           <div key={item.id} className='item__container'>
-            <div>{item.name}</div>
-            <div>{item.description}</div>
-            <div>{item.price}</div>
-            <div>{item.donation_percentage}</div>
+            <div className='item__name'>{item.name}</div>
+            <div className='item__description'>{item.description}</div>
+            <div className='item__price'>${item.price}</div>
+            <div className='item__donation_percentage'>
+              Donation Percentage: {item.donation_percentage} %
+            </div>
             <button
               className='button__add-to-order'
               onClick={() => addToCart(item)}
