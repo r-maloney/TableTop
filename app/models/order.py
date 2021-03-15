@@ -4,8 +4,7 @@ order_items = db.Table('order_items',
                        db.Column('order_id', db.Integer, db.ForeignKey(
                            'orders.id')),
                        db.Column('item_id', db.Integer, db.ForeignKey(
-                           'items.id')),
-                       db.Column('item_count', db.Integer)
+                           'items.id'))
                        )
 
 

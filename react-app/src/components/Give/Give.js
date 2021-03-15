@@ -35,9 +35,9 @@ const Give = () => {
   }
 
   const handleSelected = async (id) => {
-    dispatch(userCharity(user, id));
+    user = await dispatch(userCharity(user, id));
     console.log(id);
-    // setSelected(id);
+    setSelected(id);
   };
 
   return (

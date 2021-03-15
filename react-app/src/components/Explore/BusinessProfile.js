@@ -38,7 +38,7 @@ const BusinessProfile = ({ orderId }) => {
       <div className='business__name'>{business.name}</div>
       <div className='business__rating'>Rating: {business.rating}</div>
       <div className='business__description'>{business.description}</div>
-      <div className='business__menu'>Menu</div>
+      <div className='business__menu'></div>
       <Menu business={business} orderId={orderId} />
     </div>
   );
