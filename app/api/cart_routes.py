@@ -10,6 +10,6 @@ def cart(id):
     order = Order.query.filter_by(user_id=id, in_progress=True).first()
     print("*****************************", order)
     if order:
-        return {order.to_dict()}
+        return jsonify({"cart": order.to_dict()})
     else:
         return {"cart": {}}

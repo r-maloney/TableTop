@@ -18,7 +18,6 @@ function App() {
   useEffect(() => {
     (async () => {
       const user = await dispatch(authenticate());
-      console.log(user);
       if (!user.errors) {
         setAuthenticated(true);
         const res = await dispatch(getCart(user));
