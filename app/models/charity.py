@@ -8,12 +8,12 @@ class Charity(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(2000), nullable=False)
     img_url = db.Column(db.String(255), nullable=False)
-    address = db.Column(db.String(100), nullable=False)
-    city = db.Column(db.String(50), nullable=False)
-    state = db.Column(db.String(2), nullable=False)
-    zip = db.Column(db.Integer, nullable=False)
-    longitude = db.Column(db.Float, nullable=False)
-    latitude = db.Column(db.Float, nullable=False)
+    address = db.Column(db.String(100))
+    city = db.Column(db.String(50))
+    state = db.Column(db.String(2))
+    zip = db.Column(db.Integer)
+    longitude = db.Column(db.Float)
+    latitude = db.Column(db.Float)
 
     date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
