@@ -8,7 +8,7 @@ const setBusinesses = (business) => {
 };
 
 export const getBusinesses = () => async (dispatch) => {
-  const res = await fetch("/api/businesses");
+  const res = await fetch("/api/businesses/");
   if (res.ok) {
     const { businesses } = await res.json();
     await dispatch(setBusinesses(businesses));

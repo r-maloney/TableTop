@@ -8,7 +8,7 @@ const setItems = (item) => {
 };
 
 export const getItems = () => async (dispatch) => {
-  const res = await fetch("/api/items");
+  const res = await fetch("/api/items/");
   if (res.ok) {
     const { items } = await res.json();
     await dispatch(setItems(items));

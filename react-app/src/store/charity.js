@@ -8,7 +8,7 @@ const setCharities = (charity) => {
 };
 
 export const getCharities = () => async (dispatch) => {
-  const res = await fetch("/api/give");
+  const res = await fetch("/api/give/");
   if (res.ok) {
     const { charities } = await res.json();
     await dispatch(setCharities(charities));
