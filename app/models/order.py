@@ -1,11 +1,12 @@
 from .db import db
+from .order_items import order_items
 
-order_items = db.Table('order_items',
-                       db.Column('order_id', db.Integer, db.ForeignKey(
-                           'orders.id')),
-                       db.Column('item_id', db.Integer, db.ForeignKey(
-                           'items.id'))
-                       )
+# order_items = db.Table('order_items',
+#                        db.Column('order_id', db.Integer, db.ForeignKey(
+#                            'orders.id')),
+#                        db.Column('item_id', db.Integer, db.ForeignKey(
+#                            'items.id'))
+#                        )
 
 
 class Order(db.Model):

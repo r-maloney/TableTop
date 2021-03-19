@@ -1,5 +1,5 @@
 from .db import db
-from .order import order_items
+from .order_items import order_items
 
 
 class Item(db.Model):
