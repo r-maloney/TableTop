@@ -1,5 +1,5 @@
 from .db import db
-from .order_items import order_items
+from .order_items import Order_Items
 
 # order_items = db.Table('order_items',
 #                        db.Column('order_id', db.Integer, db.ForeignKey(
@@ -22,7 +22,7 @@ class Order(db.Model):
     ), onupdate=db.func.current_timestamp())
 
     items = db.relationship(
-        'Item', secondary=order_items, back_populates='orders')
+        'Item', secondary=Order_Items, back_populates='orders')
     user = db.relationship(
         "User", back_populates="orders")
 

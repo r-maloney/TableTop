@@ -1,5 +1,5 @@
 from .db import db
-from .order_items import order_items
+from .order_items import Order_Items
 
 
 class Item(db.Model):
@@ -20,7 +20,7 @@ class Item(db.Model):
 
     business = db.relationship("Business", back_populates="items")
     orders = db.relationship(
-        'Order', secondary=order_items, back_populates='items')
+        'Order', secondary=Order_Items, back_populates='items')
 
     def to_dict(self):
         return {
