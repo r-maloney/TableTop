@@ -34,6 +34,7 @@ class Order(db.Model):
             "order_date": self.date_created,
         }
 
+    # make into getter
     def calculate_total(self):
         if self.items is none:
             return 0
