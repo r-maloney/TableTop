@@ -1,4 +1,5 @@
 const SET_CART = "cart/setCart";
+const ADD_CART = "cart/addCart";
 
 export const setCart = (cart) => {
   return {
@@ -7,36 +8,40 @@ export const setCart = (cart) => {
   };
 };
 
-export const updateCart = (cart, orderId) => async (dispatch) => {
-  console.log("HIT UPDATE CART", cart);
-  const items = Object.values(cart);
-  const options = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "Application/json",
-    },
-    body: JSON.stringify(items),
+export const addCart = (item) => {
+  return {
+    type: ADD_CART,
+    payload: item,
   };
-  const res = await fetch(`/api/cart/${orderId}`, options);
-  const json = await res.json();
-  console.log(cart);
-  await dispatch(setCart(cart));
-  return cart;
 };
 
-export const createCart = (user) => async (dispatch) => {
+export const addToCart = (item, orderId) => async (dispatch) => {
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "Application/json",
     },
-    body: JSON.stringify({ in_progress: true, user_id: user.id }),
+    body: JSON.stringify(item),
   };
-  const res = await fetch(`/api/cart/${user.id}`, options);
+  const res = await fetch(`/api/cart/${orderId}`, options);
   const json = await res.json();
-  dispatch(setCart({}));
-  return json.id;
+  await dispatch(addCart(item));
+  return json;
 };
+
+// export const createCart = (user) => async (dispatch) => {
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "Application/json",
+//     },
+//     body: JSON.stringify({ in_progress: true, user_id: user.id }),
+//   };
+//   const res = await fetch(`/api/cart/`, options);
+//   const json = await res.json();
+//   dispatch(setCart({}));
+//   return json.id;
+// };
 
 export const getCart = (user) => async (dispatch) => {
   // const res = await fetch(`/api/cart/${user.id}`);
@@ -61,6 +66,10 @@ const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CART:
       return { ...action.payload };
+    case ADD_CART:
+      let newCart = state;
+      newCart[action.payload] = action.payload;
+      return newCart;
     default:
       return state;
   }

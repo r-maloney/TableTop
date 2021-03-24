@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Order, Item
+from app.models import db, Order, Item, Order_Items
 
 cart_routes = Blueprint('cart', __name__)
 
@@ -14,8 +14,8 @@ def cart(id):
         return {"cart": {}}
 
 
-@cart_routes.route('/<int:id>', methods=['POST'])
-def new_cart(id):
+@cart_routes.route('/', methods=['POST'])
+def new_cart():
     data = request.get_json()
     in_progress = data['in_progress']
     user_id = data['user_id']
@@ -25,28 +25,37 @@ def new_cart(id):
     return new_order.to_dict()
 
 
-@cart_routes.route('/<int:id>', methods=['PUT'])
-def update_cart(id):
-    print("*******************", id)
-    data = request.get_json()
-
-    # items = [[item['item']
-    #           for x in range(1, item['count'])] for item in data]
-    items = []
-    itemsList = []
-    for item in data:
-        for x in range(0, item['count']):
-            itemsList.append(Item.query.filter(
-                Item.id == item['item']['id']).first())
-            # items.append(item['item']['id'])
-
-    # itemList = Item.query.filter(Item.id.in_(items)).all()
-    print("*******************", itemsList)
-    order = Order.query.get(id)
-
-    # for item in items:
-    #     order.items.append(item)
-    order.items.extend(itemsList)
-    print('item_count', order.items)
+@cart_routes.route('/<int:id>', methods=['POST'])
+def add_to_cart(id):
+    item = request.get_json()
+    new_order_item = Order_Items(order_id=id, item_id=item['id'])
+    db.session.add(new_order_item)
     db.session.commit()
-    return order.to_dict()
+    return item
+
+
+# @cart_routes.route('/<int:id>', methods=['PUT'])
+# def update_cart(id):
+#     print("*******************", id)
+#     data = request.get_json()
+
+#     # items = [[item['item']
+#     #           for x in range(1, item['count'])] for item in data]
+#     items = []
+#     itemsList = []
+#     for item in data:
+#         for x in range(0, item['count']):
+#             itemsList.append(Item.query.filter(
+#                 Item.id == item['item']['id']).first())
+#             # items.append(item['item']['id'])
+
+#     # itemList = Item.query.filter(Item.id.in_(items)).all()
+#     print("*******************", itemsList)
+#     order = Order.query.get(id)
+
+#     # for item in items:
+#     #     order.items.append(item)
+#     order.items.extend(itemsList)
+#     print('item_count', order.items)
+#     db.session.commit()
+#     return order.to_dict()
