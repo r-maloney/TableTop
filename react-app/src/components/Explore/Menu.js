@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getItems } from "../../store/item";
-import { updateCart } from "../../store/cart";
+import { addToCart } from "../../store/cart";
 import { userCart } from "../../store/session";
 import "./explore.css";
 
-const Menu = ({ business, orderId }) => {
+const Menu = ({ business, orderId, addMessage }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
@@ -28,21 +28,7 @@ const Menu = ({ business, orderId }) => {
     return null;
   }
 
-  // const addToCart = async (item) => {
-  //   let newCart = { ...cart };
-  //   if (newCart[item.id]) {
-  //     newCart[item.id].count += 1;
-  //     setCart(newCart);
-  //   } else {
-  //     newCart[item.id] = { count: 1, item: item };
-  //     setCart(newCart);
-  //   }
-  //   const id = await dispatch(updateCart(newCart, orderId));
-  //   console.log(id);
-  // };
-
-  const addToCart = async (item) => {
-    // let newCart = { ...cart };
+  const addItemToCart = async (item) => {
     if (cart[item.id]) {
       cart[item.id].count += 1;
       setCart(cart);
@@ -50,9 +36,25 @@ const Menu = ({ business, orderId }) => {
       cart[item.id] = { count: 1, item: item };
       setCart(cart);
     }
-    const res = await dispatch(userCart(user, cart));
+    addMessage(item);
+    const res = await dispatch(addToCart(item, orderId));
     console.log(res);
   };
+
+  //redux state(doesn't persist reload)
+  // const addToCart = async (item) => {
+  //   // let newCart = { ...cart };
+  //   if (cart[item.id]) {
+  //     cart[item.id].count += 1;
+  //     setCart(cart);
+  //   } else {
+  //     cart[item.id] = { count: 1, item: item };
+  //     setCart(cart);
+  //   }
+  //   addMessage(item);
+  //   const res = await dispatch(userCart(user, cart));
+  //   console.log(res);
+  // };
 
   return (
     <>
@@ -67,7 +69,7 @@ const Menu = ({ business, orderId }) => {
             </div>
             <button
               className='button__add-to-order'
-              onClick={() => addToCart(item)}
+              onClick={() => addItemToCart(item)}
             >
               Add to Order
             </button>

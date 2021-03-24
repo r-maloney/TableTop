@@ -59,6 +59,9 @@
 .nav__browse a {
   color: rgb(100, 100, 100);
   align-self: center;
+  justify-self: center;
+  margin-left: 1rem;
+  white-space: nowrap;
 }
 
 .nav__browse a:hover {

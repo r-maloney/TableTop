@@ -1,36 +1,39 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { userCart } from "../../store/session";
 import "../Explore/explore.css";
+import { addToCart, getCart } from "../../store/cart";
 
 const ShoppingCart = () => {
-  // useEffect(() => { dispatch(getCart)})
   const dispatch = useDispatch();
   const history = useHistory();
   const [loaded, setLoaded] = useState(false);
-  // const [count, setCount] = useState(0);
 
   const user = useSelector((state) => state.session.user);
-  // if (user.cart) {
-  //   setLoaded(true);
-  // }
-  let cartArr = [];
+  const cart = useSelector((state) => state.cart);
+  const cartArr = cart.items;
+  const cartSet = [];
+  const ids = [];
+  for (let item of cartArr) {
+    console.log(item);
+    if (!ids.includes(item.id)) {
+      cartSet.push(item);
+      ids.push(item.id);
+    }
+  }
+  console.log(cartSet);
+
   useEffect(() => {
-    if (user.cart) {
+    if (user) dispatch(getCart(user));
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    if (cartArr) {
       setLoaded(true);
     }
-  }, [setLoaded, user]);
-  console.log("cart", cartArr, user.cart);
+  }, [setLoaded, cartArr]);
 
-  if (loaded) {
-    let cart = user.cart;
-    for (const id in cart) {
-      console.log(id);
-      cartArr.push(cart[id]);
-    }
-    console.log(cartArr);
-  } else {
+  if (!loaded) {
     return <div className='cart__empty'>Nothing in your cart yet</div>;
   }
 
@@ -38,7 +41,13 @@ const ShoppingCart = () => {
     history.push("/thank-you");
   };
 
-  const increaseCount = (id) => {
+  const calculateCount = (id) => {
+    cartArr.filter((item) => (item.id = id));
+    return cartArr.length;
+  };
+
+  const increaseCount = async (item) => {
+    await dispatch(addToCart(item, cart.id));
     // const newCount = count + 1;
     // setCount(newCount);
     // let newId = parseInt(id);
@@ -59,18 +68,21 @@ const ShoppingCart = () => {
       <div>
         {loaded &&
           cartArr.map((item) => (
-            <div className='cart__item'>
-              <div className='cart__name'>{item.item.name}</div>
+            <div key={item.id} className='cart__item'>
+              <div className='cart__name'>
+                {item.name}
+                {item.id}
+              </div>
               <button
                 className='cart__minus'
-                onClick={() => decreaseCount(item.id)}
+                onClick={() => decreaseCount(item)}
               >
                 -
               </button>
-              <div className='cart__count'>{item.count}</div>
+              <div className='cart__count'>{calculateCount(item.id)}</div>
               <button
                 className='cart__plus'
-                onClick={() => increaseCount(item.id)}
+                onClick={() => increaseCount(item)}
               >
                 +
               </button>

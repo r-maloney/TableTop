@@ -1,11 +1,12 @@
 from .db import db
+from .order_items import Order_Items
 
-order_items = db.Table('order_items',
-                       db.Column('order_id', db.Integer, db.ForeignKey(
-                           'orders.id')),
-                       db.Column('item_id', db.Integer, db.ForeignKey(
-                           'items.id'))
-                       )
+# order_items = db.Table('order_items',
+#                        db.Column('order_id', db.Integer, db.ForeignKey(
+#                            'orders.id')),
+#                        db.Column('item_id', db.Integer, db.ForeignKey(
+#                            'items.id'))
+#                        )
 
 
 class Order(db.Model):
@@ -21,19 +22,23 @@ class Order(db.Model):
     ), onupdate=db.func.current_timestamp())
 
     items = db.relationship(
-        'Item', secondary=order_items, back_populates='orders')
+        'Item', secondary=lambda: Order_Items.__table__, back_populates='orders')
     user = db.relationship(
         "User", back_populates="orders")
 
     def to_dict(self):
+        allItems = [item.to_dict() for item in self.items]
+
         return {
             "id": self.id,
             # "amount_paid": self.calculate_total(),
             # "donation_amount": self.calculate_donation(),
             "user": self.user.to_dict(),
             "order_date": self.date_created,
+            # "items": allItems
         }
 
+    @property
     def calculate_total(self):
         if self.items is none:
             return 0
@@ -41,6 +46,7 @@ class Order(db.Model):
         sum = sum(prices)
         return sum
 
+    @property
     def calculate_donation(self):
         if self.items is none:
             return 0
