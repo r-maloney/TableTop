@@ -12,6 +12,16 @@ const ShoppingCart = () => {
   const user = useSelector((state) => state.session.user);
   const cart = useSelector((state) => state.cart);
   const cartArr = cart.items;
+  const cartSet = [];
+  const ids = [];
+  for (let item of cartArr) {
+    console.log(item);
+    if (!ids.includes(item.id)) {
+      cartSet.push(item);
+      ids.push(item.id);
+    }
+  }
+  console.log(cartSet);
 
   useEffect(() => {
     if (user) dispatch(getCart(user));

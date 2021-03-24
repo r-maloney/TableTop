@@ -38,7 +38,7 @@ class Order(db.Model):
             # "items": allItems
         }
 
-    # make into getter
+    @property
     def calculate_total(self):
         if self.items is none:
             return 0
@@ -46,6 +46,7 @@ class Order(db.Model):
         sum = sum(prices)
         return sum
 
+    @property
     def calculate_donation(self):
         if self.items is none:
             return 0
