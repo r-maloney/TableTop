@@ -68,11 +68,32 @@ a div {
   font-size: 1.2rem;
 }
 
+.item-added__alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  color: white;
+  justify-self: center;
+  padding-left: 0.6rem;
+  margin-top: 1rem;
+  height: 2rem;
+  width: 80%;
+  background-color: #f0881e;
+  border: 3px solid #af5d0a;
+}
+.item-added__alert button {
+  background-color: #f0881e;
+  color: rgb(100, 100, 100);
+  font-size: 1.2rem;
+  border: none;
+  align-self: flex-end;
+}
+
 .menu__container {
   margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 80%;
   justify-self: center;
   margin-left: auto;
   margin-right: auto;

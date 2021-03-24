@@ -17,6 +17,8 @@ const BusinessProfile = ({ orderId }) => {
   const business = useSelector((state) => state.business[id]);
 
   const [isLoaded, setIsLoaded] = useState(false);
+  const [alert, setAlert] = useState(false);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (business) {
@@ -28,6 +30,11 @@ const BusinessProfile = ({ orderId }) => {
     return null;
   }
 
+  const addMessage = (item) => {
+    setMessage(item.name);
+    setAlert(true);
+  };
+
   return (
     <div className='business__container'>
       <img
@@ -38,8 +45,14 @@ const BusinessProfile = ({ orderId }) => {
       <div className='business__name'>{business.name}</div>
       <div className='business__rating'>Rating: {business.rating}</div>
       <div className='business__description'>{business.description}</div>
+      {alert && (
+        <div className='item-added__alert'>
+          <p>{message} added to order</p>
+          <button onClick={() => setAlert(false)}>x</button>
+        </div>
+      )}
       <div className='business__menu'></div>
-      <Menu business={business} orderId={orderId} />
+      <Menu business={business} orderId={orderId} addMessage={addMessage} />
     </div>
   );
 };

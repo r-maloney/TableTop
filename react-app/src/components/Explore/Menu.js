@@ -5,7 +5,7 @@ import { updateCart } from "../../store/cart";
 import { userCart } from "../../store/session";
 import "./explore.css";
 
-const Menu = ({ business, orderId }) => {
+const Menu = ({ business, orderId, addMessage }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
@@ -50,6 +50,7 @@ const Menu = ({ business, orderId }) => {
       cart[item.id] = { count: 1, item: item };
       setCart(cart);
     }
+    addMessage(item);
     const res = await dispatch(userCart(user, cart));
     console.log(res);
   };
