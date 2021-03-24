@@ -22,8 +22,9 @@ function App() {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
-        const id = await dispatch(getCart(user));
-        setOrderId(id);
+        await dispatch(getCart(user));
+        console.log(user.id);
+        setOrderId(user.id);
       }
       setLoaded(true);
     })();

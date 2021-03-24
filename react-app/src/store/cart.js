@@ -25,6 +25,7 @@ export const addToCart = (item, orderId) => async (dispatch) => {
   };
   const res = await fetch(`/api/cart/${orderId}`, options);
   const json = await res.json();
+  console.log(json);
   await dispatch(addCart(item));
   return json;
 };
@@ -48,6 +49,7 @@ const cartReducer = (state = initialState, action) => {
     case SET_CART:
       return { ...action.payload };
     case ADD_CART:
+      console.log(state, action);
       let newCart = state;
       newCart[action.payload] = action.payload;
       return newCart;

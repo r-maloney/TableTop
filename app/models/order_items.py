@@ -11,3 +11,9 @@ class Order_Items(db.Model):
     date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
     ), onupdate=db.func.current_timestamp())
+
+    def to_dict(self):
+        return self.item_id
+
+    # def item_id(self):
+    #     return self.item_id

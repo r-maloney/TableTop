@@ -35,7 +35,8 @@ class Order(db.Model):
             # "donation_amount": self.calculate_donation(),
             "user": self.user.to_dict(),
             "order_date": self.date_created,
-            "items": allItems}
+            # "items": allItems
+        }
 
     # make into getter
     def calculate_total(self):
