@@ -9,22 +9,21 @@ import Give from "./components/Give/Give";
 import BusinessProfile from "./components/Explore/BusinessProfile";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import ThankYou from "./components/ThankYou";
-import { getCart, createCart } from "./store/cart";
+import { getCart } from "./store/cart";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const dispatch = useDispatch();
-
   const [orderId, setOrderId] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
-        const orderId = await dispatch(getCart(user));
-        setOrderId(orderId);
+        const id = await dispatch(getCart(user));
+        setOrderId(id);
       }
       setLoaded(true);
     })();

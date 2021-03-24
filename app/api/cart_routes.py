@@ -9,20 +9,23 @@ cart_routes = Blueprint('cart', __name__)
 def cart(id):
     order = Order.query.filter_by(user_id=id, in_progress=True).first()
     if order:
-        return jsonify({"cart": order.to_dict()})
+        return jsonify(order.to_dict())
     else:
-        return {"cart": {}}
+        new_order = Order(user_id=id, in_progress=True)
+        db.session.add(new_order)
+        db.session.commit()
+        return jsonify(new_order.to_dict())
 
 
-@cart_routes.route('/', methods=['POST'])
-def new_cart():
-    data = request.get_json()
-    in_progress = data['in_progress']
-    user_id = data['user_id']
-    new_order = Order(user_id=user_id, in_progress=in_progress)
-    db.session.add(new_order)
-    db.session.commit()
-    return new_order.to_dict()
+# @cart_routes.route('/', methods=['POST'])
+# def new_cart():
+#     data = request.get_json()
+#     in_progress = data['in_progress']
+#     user_id = data['user_id']
+#     new_order = Order(user_id=user_id, in_progress=in_progress)
+#     db.session.add(new_order)
+#     db.session.commit()
+#     return new_order.to_dict()
 
 
 @cart_routes.route('/<int:id>', methods=['POST'])

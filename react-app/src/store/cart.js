@@ -29,33 +29,14 @@ export const addToCart = (item, orderId) => async (dispatch) => {
   return json;
 };
 
-// export const createCart = (user) => async (dispatch) => {
-//   const options = {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "Application/json",
-//     },
-//     body: JSON.stringify({ in_progress: true, user_id: user.id }),
-//   };
-//   const res = await fetch(`/api/cart/`, options);
-//   const json = await res.json();
-//   dispatch(setCart({}));
-//   return json.id;
-// };
-
 export const getCart = (user) => async (dispatch) => {
-  // const res = await fetch(`/api/cart/${user.id}`);
-  const res = await fetch(`/api/cart/${2}`);
-  console.log("Hiting cart store", res);
+  const res = await fetch(`/api/cart/${user.id}`);
   if (res.ok) {
     const cart = await res.json();
     console.log(cart);
-    if (cart.cart.id) {
+    if (cart.id) {
       await dispatch(setCart(cart));
-      return cart.cart.id;
-    } else {
-      const id = await dispatch(createCart(user));
-      return id;
+      return cart;
     }
   }
 };

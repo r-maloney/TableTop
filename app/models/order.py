@@ -27,13 +27,15 @@ class Order(db.Model):
         "User", back_populates="orders")
 
     def to_dict(self):
+        allItems = [item.to_dict() for item in self.items]
+
         return {
             "id": self.id,
             # "amount_paid": self.calculate_total(),
             # "donation_amount": self.calculate_donation(),
             "user": self.user.to_dict(),
             "order_date": self.date_created,
-        }
+            "items": allItems}
 
     # make into getter
     def calculate_total(self):
