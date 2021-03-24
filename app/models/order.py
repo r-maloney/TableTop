@@ -22,7 +22,7 @@ class Order(db.Model):
     ), onupdate=db.func.current_timestamp())
 
     items = db.relationship(
-        'Item', secondary=Order_Items, back_populates='orders')
+        'Item', secondary=lambda: Order_Items.__table__, back_populates='orders')
     user = db.relationship(
         "User", back_populates="orders")
 

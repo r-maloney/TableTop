@@ -20,7 +20,7 @@ class Item(db.Model):
 
     business = db.relationship("Business", back_populates="items")
     orders = db.relationship(
-        'Order', secondary=Order_Items, back_populates='items')
+        'Order', secondary=lambda: Order_Items.__table__, back_populates='items')
 
     def to_dict(self):
         return {
