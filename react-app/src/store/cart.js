@@ -46,10 +46,11 @@ const initialState = {};
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CART:
-      return { ...action.payload };
+      let newCart = action.payload;
+      return newCart;
     case ADD_CART:
       console.log(state, action);
-      let newCart = state;
+      newCart = state;
       newCart[action.payload] = action.payload;
       return newCart;
     default:
