@@ -30,6 +30,22 @@ export const addToCart = (item, orderId) => async (dispatch) => {
   return json;
 };
 
+//******Pick up from here
+// export const removeFromCart = (item, orderId) => async (dispatch) => {
+//   const options = {
+//     method: "DELETE",
+//     headers: {
+//       "Content-Type": "Application/json",
+//     },
+//     body: JSON.stringify(item),
+//   };
+//   const res = await fetch(`/api/cart/${orderId}`, options);
+//   const json = await res.json();
+//   console.log(json);
+//   await dispatch(addCart(item));
+//   return json;
+// };
+
 export const getCart = (user) => async (dispatch) => {
   const res = await fetch(`/api/cart/${user.id}`);
   if (res.ok) {

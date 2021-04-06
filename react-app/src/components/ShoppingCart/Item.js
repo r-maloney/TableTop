@@ -1,25 +1,19 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { addToCart } from "../../store/cart";
+import { addToCart, removeFromCart } from "../../store/cart";
 
 const Item = ({ item, cart }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(item.quantity);
 
   const increaseCount = async (item) => {
-    const newItem = await dispatch(addToCart(item, cart.id));
-
-    // setCount(newCount);
-    // let newId = parseInt(id);
-    // let cart = user.cart;
-    // console.log(cart[1], cart[newId], cart[id], cart.id, cart.newId);
-    // console.log(user.cart, user.cart[id]);
-    // let cart = user.cart[item_id]["count"]++;
-    // dispatch(userCart(user, cart));
+    await dispatch(addToCart(item, cart.id));
+    setQuantity(() => quantity + 1);
   };
-  const decreaseCount = (item_id) => {
-    // let cart = user.cart[item_id];
-    // dispatch(userCart(user, cart));
+  const decreaseCount = async (item) => {
+    // ****Pick up from here
+    // await dispatch(removeFromCart(item, cart.id));
+    setQuantity(() => quantity - 1);
   };
 
   return (
