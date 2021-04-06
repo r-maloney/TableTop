@@ -11,8 +11,7 @@ const Item = ({ item, cart }) => {
     setQuantity(() => quantity + 1);
   };
   const decreaseCount = async (item) => {
-    // ****Pick up from here
-    // await dispatch(removeFromCart(item, cart.id));
+    await dispatch(removeFromCart(item, cart.id));
     setQuantity(() => quantity - 1);
   };
 

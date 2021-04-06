@@ -11,7 +11,6 @@ def cart(id):
     order_items = Order_Items.query.filter_by(order_id=order.id).all()
     itemsList = [Item.query.filter(
         Item.id == item.item_id).first().to_dict() for item in order_items]
-    print(itemsList, "*************************************")
     if order:
         result = order.to_dict()
         result["items"] = itemsList
@@ -30,6 +29,17 @@ def add_to_cart(id):
     item = request.get_json()
     new_order_item = Order_Items(order_id=id, item_id=item['id'])
     db.session.add(new_order_item)
+    db.session.commit()
+    return item
+
+
+@cart_routes.route('/<int:id>', methods=['DELETE'])
+def remove_from_cart(id):
+    item = request.get_json()
+    order_item = Order_Items.query.filter_by(
+        order_id=id, item_id=item["id"]).first()
+    print(order_item, "*******************************")
+    db.session.delete(order_item)
     db.session.commit()
     return item
 
