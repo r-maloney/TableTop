@@ -12,16 +12,17 @@ const ShoppingCart = () => {
   const user = useSelector((state) => state.session.user);
   const cart = useSelector((state) => state.cart);
   const cartArr = cart.items;
-  const cartSet = [];
-  const ids = [];
+  const cartCount = {};
+
   for (let item of cartArr) {
-    console.log(item);
-    if (!ids.includes(item.id)) {
-      cartSet.push(item);
-      ids.push(item.id);
+    if (cartCount[item.id]) {
+      cartCount[item.id].quantity++;
+    } else {
+      item["quantity"] = 1;
+      cartCount[item.id] = item;
+      console.log(item);
     }
   }
-  console.log(cartSet);
 
   useEffect(() => {
     if (user) dispatch(getCart(user));
@@ -48,6 +49,7 @@ const ShoppingCart = () => {
 
   const increaseCount = async (item) => {
     await dispatch(addToCart(item, cart.id));
+    console.log("dispatched addtocart");
     // const newCount = count + 1;
     // setCount(newCount);
     // let newId = parseInt(id);

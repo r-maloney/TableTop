@@ -44,13 +44,13 @@ export const getCart = (user) => async (dispatch) => {
 const initialState = {};
 
 const cartReducer = (state = initialState, action) => {
+  let newCart = state;
   switch (action.type) {
     case SET_CART:
-      let newCart = action.payload;
+      newCart = action.payload;
       return newCart;
     case ADD_CART:
       console.log(state, action);
-      newCart = state;
       newCart[action.payload] = action.payload;
       return newCart;
     default:
