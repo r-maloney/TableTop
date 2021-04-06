@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../Explore/explore.css";
 import { addToCart, getCart } from "../../store/cart";
+import Item from "./Item";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ const ShoppingCart = () => {
       console.log(item);
     }
   }
+
+  //Need to add item component. Get object.values from cartCount and map over array. Passing in item as props
 
   useEffect(() => {
     if (user) dispatch(getCart(user));
@@ -70,25 +73,11 @@ const ShoppingCart = () => {
       <div>
         {loaded &&
           cartArr.map((item) => (
-            <div key={item.id} className='cart__item'>
-              <div className='cart__name'>
-                {item.name}
-                {item.id}
-              </div>
-              <button
-                className='cart__minus'
-                onClick={() => decreaseCount(item)}
-              >
-                -
-              </button>
-              <div className='cart__count'>{calculateCount(item.id)}</div>
-              <button
-                className='cart__plus'
-                onClick={() => increaseCount(item)}
-              >
-                +
-              </button>
-            </div>
+            <Item
+              item={item}
+              decreaseCount={decreaseCount}
+              increaseCount={increaseCount}
+            />
           ))}
       </div>
       <button className='cart__order' onClick={handleSubmit}>
