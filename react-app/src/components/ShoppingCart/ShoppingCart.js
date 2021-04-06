@@ -25,6 +25,8 @@ const ShoppingCart = () => {
     }
   }
 
+  const cartSet = Object.values(cartCount);
+
   //Need to add item component. Get object.values from cartCount and map over array. Passing in item as props
 
   useEffect(() => {
@@ -72,7 +74,7 @@ const ShoppingCart = () => {
       <h1>Shopping Cart</h1>
       <div>
         {loaded &&
-          cartArr.map((item) => (
+          cartSet.map((item) => (
             <Item
               item={item}
               decreaseCount={decreaseCount}
