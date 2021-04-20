@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
+import { useSelector } from "react-redux";
 import Splash from "./components/Splash";
 import Navigation from "./components/Navigation";
 import Explore from "./components/Explore/Explore";
@@ -9,13 +10,17 @@ import Give from "./components/Give/Give";
 import BusinessProfile from "./components/Explore/BusinessProfile";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import ThankYou from "./components/ThankYou";
+import Cart from "./components/Cart/Cart";
 import { getCart } from "./store/cart";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const [orderId, setOrderId] = useState();
+
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     (async () => {
@@ -30,6 +35,10 @@ function App() {
     })();
   }, []);
 
+  useEffect(() => {
+    if (cart.items) setShowCart(true);
+  }, [cart]);
+
   if (!loaded) {
     return null;
   }
@@ -39,7 +48,10 @@ function App() {
       <Navigation
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
+        setShowCart={setShowCart}
+        showCart={showCart}
       />
+      <Cart showCart={showCart} />
       <Switch>
         <Route path='/' exact={true} authenticated={authenticated}>
           <Splash

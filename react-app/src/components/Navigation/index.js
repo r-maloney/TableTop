@@ -6,7 +6,12 @@ import LoginModal from "../auth/LoginModal";
 import SignUpModal from "../auth/SignUpModal";
 import "./navigation.css";
 
-const Navigation = ({ authenticated, setAuthenticated }) => {
+const Navigation = ({
+  authenticated,
+  setAuthenticated,
+  showCart,
+  setShowCart,
+}) => {
   return (
     <div className='nav__container'>
       <NavLink to='/' exact={true} activeClassName='active'>
@@ -27,6 +32,7 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
             <NavLink to='/shopping-cart' exact={true} activeClassName='active'>
               Shopping Cart
             </NavLink>
+            <a onClick={() => setShowCart(!showCart)}>Cart</a>
           </>
         )}
       </div>
