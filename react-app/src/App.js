@@ -65,9 +65,9 @@ function App() {
         <Route path='/give' exact={true} authenticated={authenticated}>
           <Give />
         </Route>
-        <Route path='/shopping-cart' exact={true} authenticated={authenticated}>
+        {/* <Route path='/shopping-cart' exact={true} authenticated={authenticated}>
           <ShoppingCart />
-        </Route>
+        </Route> */}
         <Route
           path='/explore/:id(\d+)'
           exact={true}
