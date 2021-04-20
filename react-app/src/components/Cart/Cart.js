@@ -54,16 +54,15 @@ const Cart = ({ showCart, setShowCart }) => {
         <button className='arrow-button' onClick={() => setShowCart(false)}>
           <i className='fas fa-arrow-right'></i>
         </button>
+        <h1>Shopping Cart</h1>
       </div>
       <div className='cart__container'>
-        <h1>Shopping Cart</h1>
         <div>
           {loaded && cartSet.map((item) => <Item item={item} cart={cart} />)}
         </div>
         <button className='cart__order' onClick={handleSubmit}>
           Order Now
         </button>
-        <i className='fas fa-arrow-right'></i>
       </div>
     </div>
   );

@@ -2,10 +2,10 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 300px;
-  right: -300px;
+  width: 400px;
+  right: -400px;
   transition: all 0.2s linear;
-  background-color: whitesmoke;
+  background-color: #fafafa;
   box-shadow: 0px 0 8px 1px lightgray;
 }
 
@@ -15,14 +15,18 @@
   align-items: center;
   padding: 0 16px;
   height: 54px;
-  background-color: pink;
+  background-color: #f0881e;
   box-shadow: 3px -1px 3px 3px lightgray;
+}
+.sidebar-header h1 {
+  color: white;
+  margin-right: 8rem;
 }
 
 .arrow-button {
   color: white;
   height: 32px;
-  background-color: coral;
+  background-color: #f0881e;
   border: 0;
   border-radius: 8px;
   min-width: 32px;
@@ -30,7 +34,7 @@
 
 .cart__container {
   margin: 3rem;
-  width: 30%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
