@@ -8,8 +8,7 @@ import Navigation from "./components/Navigation";
 import Explore from "./components/Explore/Explore";
 import Give from "./components/Give/Give";
 import BusinessProfile from "./components/Explore/BusinessProfile";
-import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import ThankYou from "./components/ThankYou";
+import ThankYou from "./components/Cart/ThankYou";
 import Cart from "./components/Cart/Cart";
 import { getCart } from "./store/cart";
 
@@ -51,7 +50,7 @@ function App() {
         setShowCart={setShowCart}
         showCart={showCart}
       />
-      <Cart showCart={showCart} />
+      <Cart showCart={showCart} setShowCart={setShowCart} />
       <Switch>
         <Route path='/' exact={true} authenticated={authenticated}>
           <Splash
@@ -65,9 +64,6 @@ function App() {
         <Route path='/give' exact={true} authenticated={authenticated}>
           <Give />
         </Route>
-        {/* <Route path='/shopping-cart' exact={true} authenticated={authenticated}>
-          <ShoppingCart />
-        </Route> */}
         <Route
           path='/explore/:id(\d+)'
           exact={true}

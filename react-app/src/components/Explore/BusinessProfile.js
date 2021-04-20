@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getBusinesses } from "../../store/business";
 import Menu from "./Menu";
-import "./explore.css";
+import "./Explore.css";
 
 const BusinessProfile = ({ orderId }) => {
   let { id } = useParams();

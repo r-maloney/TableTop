@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getCart } from "../../store/cart";
-import Item from "../ShoppingCart/Item";
+import Item from "./Item";
 import "./Cart.css";
-import "../Explore/explore.css";
+import "../Explore/Explore.css";
 
-const Cart = ({ showCart }) => {
+const Cart = ({ showCart, setShowCart }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +50,11 @@ const Cart = ({ showCart }) => {
       className='sidebar'
       style={showCart ? { transform: "translateX(-100%)" } : {}}
     >
+      <div className='sidebar-header'>
+        <button className='arrow-button' onClick={() => setShowCart(false)}>
+          <i className='fas fa-arrow-right'></i>
+        </button>
+      </div>
       <div className='cart__container'>
         <h1>Shopping Cart</h1>
         <div>
@@ -58,6 +63,7 @@ const Cart = ({ showCart }) => {
         <button className='cart__order' onClick={handleSubmit}>
           Order Now
         </button>
+        <i className='fas fa-arrow-right'></i>
       </div>
     </div>
   );
