@@ -10,6 +10,7 @@ import Give from "./components/Give/Give";
 import BusinessProfile from "./components/Explore/BusinessProfile";
 import ThankYou from "./components/Cart/ThankYou";
 import Cart from "./components/Cart/Cart";
+import Map from "./components/Map/Map";
 import { getCart } from "./store/cart";
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
       />
       <Cart showCart={showCart} setShowCart={setShowCart} />
       <Switch>
+        <Route path='/map'>
+          <Map />
+        </Route>
         <Route path='/' exact={true} authenticated={authenticated}>
           <Splash
             authenticated={authenticated}
