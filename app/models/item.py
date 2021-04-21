@@ -23,7 +23,6 @@ class Item(db.Model):
         'Order', secondary=lambda: Order_Items.__table__, back_populates='items')
 
     def to_dict(self):
-        print('TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST', self.id)
         return {
             "id": self.id,
             "name": self.name,
