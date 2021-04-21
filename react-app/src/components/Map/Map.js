@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
+import restaurants from "../../data/locations.json";
 
 const Map = () => {
   const [viewport, setViewport] = useState({
@@ -9,14 +10,22 @@ const Map = () => {
     width: "50vw",
     height: "50vh",
   });
-  console.log(process.env.REACT_APP_MAPBOX_API_KEY);
+  console.log(restaurants);
   return (
     <ReactMapGL
       {...viewport}
       onViewportChange={(newView) => setViewport(newView)}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_KEY}
       mapStyle={"mapbox://styles/r-maloney/ckns1ra7k010p17qvzie84vad"}
-    />
+    >
+      <Marker
+        latitude={restaurants.location[0]}
+        longitude={restaurants.location[1]}
+      >
+        <div>spot</div>
+      </Marker>
+      ))}
+    </ReactMapGL>
   );
 };
 
