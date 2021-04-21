@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getItems } from "../../store/item";
 import { addToCart } from "../../store/cart";
 import { userCart } from "../../store/session";
-import "./explore.css";
+import "./Explore.css";
 
 const Menu = ({ business, orderId, addMessage }) => {
   const dispatch = useDispatch();

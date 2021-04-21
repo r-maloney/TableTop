@@ -1,12 +1,6 @@
 from .db import db
 from .order_items import Order_Items
-
-# order_items = db.Table('order_items',
-#                        db.Column('order_id', db.Integer, db.ForeignKey(
-#                            'orders.id')),
-#                        db.Column('item_id', db.Integer, db.ForeignKey(
-#                            'items.id'))
-#                        )
+from .item import Item
 
 
 class Order(db.Model):
@@ -27,26 +21,32 @@ class Order(db.Model):
         "User", back_populates="orders")
 
     def to_dict(self):
-        allItems = [item.to_dict() for item in self.items]
 
         return {
             "id": self.id,
-            # "amount_paid": self.calculate_total(),
+            "total": self.calculate_total(),
             # "donation_amount": self.calculate_donation(),
             "user": self.user.to_dict(),
             "order_date": self.date_created,
-            # "items": allItems
         }
 
     @property
-    def calculate_total(self):
-        if self.items is none:
-            return 0
-        prices = [item.price for item in self.items]
-        sum = sum(prices)
-        return sum
+    def order_items(self):
+        order_items = Order_Items.query.filter_by(order_id=self.id).all()
+        items = []
+        for order_item in order_items:
+            item = Item.query.filter_by(id=order_item.item_id).first()
+            items.append(item.to_dict())
+        return items
 
-    @property
+    def calculate_total(self):
+        if self.order_items is None:
+            return 0
+        for item in self.order_items:
+            prices = [item['price'] for item in self.order_items]
+            total = sum(prices)
+        return total
+
     def calculate_donation(self):
         if self.items is none:
             return 0

@@ -1,12 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import logo from "../../images/logos/TTLogo.png";
 import LoginModal from "../auth/LoginModal";
 import SignUpModal from "../auth/SignUpModal";
 import "./navigation.css";
 
-const Navigation = ({ authenticated, setAuthenticated }) => {
+const Navigation = ({
+  authenticated,
+  setAuthenticated,
+  showCart,
+  setShowCart,
+}) => {
   return (
     <div className='nav__container'>
       <NavLink to='/' exact={true} activeClassName='active'>
@@ -24,9 +29,7 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
             <NavLink to='/give' exact={true} activeClassName='active'>
               Give
             </NavLink>
-            <NavLink to='/shopping-cart' exact={true} activeClassName='active'>
-              Shopping Cart
-            </NavLink>
+            <Link onClick={() => setShowCart(!showCart)}>Cart</Link>
           </>
         )}
       </div>
@@ -53,31 +56,6 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
           </>
         )}
       </div>
-      {/* <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton setAuthenticated={setAuthenticated} />
-        </li>
-      </ul> */}
     </div>
   );
 };
