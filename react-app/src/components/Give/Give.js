@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getCharities } from "../../store/charity";
 import { userCharity } from "../../store/session";
-import "../Explore/explore.css";
+import "../Explore/Explore.css";
 
 const Give = () => {
   const dispatch = useDispatch();

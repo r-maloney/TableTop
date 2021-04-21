@@ -6,10 +6,18 @@ const Map = () => {
     latitude: 38.90882113835013,
     longitude: -76.99803202807391,
     zoom: 10,
-    width: "100vw",
-    height: "100vh",
+    width: "50vw",
+    height: "50vh",
   });
-  return <ReactMapGL {...viewport} />;
+  console.log(process.env.REACT_APP_MAPBOX_API_KEY);
+  return (
+    <ReactMapGL
+      {...viewport}
+      onViewportChange={(newView) => setViewport(newView)}
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_KEY}
+      mapStyle={"mapbox://styles/r-maloney/ckns1ra7k010p17qvzie84vad"}
+    />
+  );
 };
 
 export default Map;
@@ -20,16 +28,3 @@ export default Map;
 //     container: "YOUR_CONTAINER_ELEMENT_ID",
 //     style: "mapbox://styles/mapbox/streets-v11",
 //   });
-
-//   const [viewPort, setViewPort] = useState({
-//     latitude: 38.90882113835013,
-//     longitude: -76.99803202807391,
-//     zoom: 10,
-//     width: "100vw",
-//     height: "100vh",
-//   });
-//   return (
-//     <div>
-//       <mapboxgl {...viewPort}></mapboxgl>
-//     </div>
-//   );
