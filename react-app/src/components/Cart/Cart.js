@@ -60,7 +60,7 @@ const Cart = ({ showCart, setShowCart }) => {
         <div>
           {loaded && cartSet.map((item) => <Item item={item} cart={cart} />)}
         </div>
-        <p>Amount Due:</p>
+        <p>Amount Due: {cart.total}</p>
         <p>Donation Amount: GOING TO ....</p>
         <button className='cart__order' onClick={handleSubmit}>
           Order Now

@@ -30,11 +30,6 @@ def add_to_cart(id):
     new_order_item = Order_Items(order_id=id, item_id=item['id'])
     db.session.add(new_order_item)
     db.session.commit()
-
-    order = Order.query.filter_by(id=1, in_progress=True).first()
-    # order.items
-    # print('*'*200, order.order_items)
-    print('*'*200, order.calculate_total())
     return item
 
 

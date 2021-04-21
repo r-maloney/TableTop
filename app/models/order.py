@@ -24,7 +24,7 @@ class Order(db.Model):
 
         return {
             "id": self.id,
-            "amount_paid": self.calculate_total(),
+            "total": self.calculate_total(),
             # "donation_amount": self.calculate_donation(),
             "user": self.user.to_dict(),
             "order_date": self.date_created,
