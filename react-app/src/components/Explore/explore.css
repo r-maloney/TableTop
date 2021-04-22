@@ -8,21 +8,25 @@ a div {
 }
 
 .explore__container {
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  /* background-color: #878787; */
+  width: 100%;
+  display: grid;
+  grid-template-columns: 35rem auto;
 }
 
 .explore__business-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .explore__business-card {
   margin: 1rem;
+  overflow: hidden;
+  width: 95%;
+  height: 18rem;
   /* background-color: #878787; */
   box-shadow: 3px 3px 5px rgb(224, 224, 224);
   border: 1px solid rgb(224, 224, 224);
@@ -35,8 +39,7 @@ a div {
 }
 
 .business__container {
-  /* width: 14rem; */
-  /* height: 24rem; */
+  width: 100%;
   display: grid;
   color: black;
   justify-content: center;
@@ -50,7 +53,9 @@ a div {
 }
 
 .business__img {
-  width: 20rem;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
   justify-self: center;
 }
 
@@ -177,4 +182,20 @@ a div {
   color: white;
   font-size: 1.5rem;
   height: 3rem;
+}
+
+.mapbox__spot-icon {
+  color: #f0881e;
+  /* position: relative;
+  top: -1.33rem;
+  left: -1.33rem; */
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  height: 50px;
+  width: 5px;
+}
+.mapbox__spot-icon span {
+  font-size: 2rem;
 }
