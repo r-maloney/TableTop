@@ -8,7 +8,7 @@ import charitiesReducer from "./charity";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  business: businessReducer,
+  businesses: businessReducer,
   item: itemReducer,
   cart: cartReducer,
   charities: charitiesReducer,

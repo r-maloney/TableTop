@@ -7,14 +7,14 @@ import "./Explore.css";
 
 const BusinessProfile = ({ orderId }) => {
   let { id } = useParams();
-  id -= 1;
+  id = 1;
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getBusinesses());
   }, [dispatch]);
 
-  const business = useSelector((state) => state.business[id]);
+  const business = useSelector((state) => state.businesses[id]);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [alert, setAlert] = useState(false);

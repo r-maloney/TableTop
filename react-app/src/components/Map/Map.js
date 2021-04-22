@@ -4,8 +4,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import "../Explore/Explore.css";
 
 const Map = () => {
-  const businesses = useSelector((state) => Object.values(state.business));
-  console.log(businesses);
+  const businesses = useSelector((state) => Object.values(state.businesses));
 
   const [viewport, setViewport] = useState({
     latitude: 38.90882113835013,
