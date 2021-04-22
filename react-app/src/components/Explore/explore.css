@@ -178,3 +178,19 @@ a div {
   font-size: 1.5rem;
   height: 3rem;
 }
+
+.mapbox__spot-icon {
+  color: #f0881e;
+  position: relative;
+  top: -1.33rem;
+  left: -1.33rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  height: 50px;
+  width: 5px;
+}
+.mapbox__spot-icon span {
+  font-size: 2rem;
+}

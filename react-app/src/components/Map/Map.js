@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
 import restaurants from "../../data/locations.json";
+import "../Explore/Explore.css";
 
 const Map = () => {
   const [viewport, setViewport] = useState({
@@ -10,7 +11,7 @@ const Map = () => {
     width: "50vw",
     height: "50vh",
   });
-  console.log(restaurants);
+
   return (
     <ReactMapGL
       {...viewport}
@@ -22,18 +23,14 @@ const Map = () => {
         latitude={restaurants.location[0]}
         longitude={restaurants.location[1]}
       >
-        <div>spot</div>
+        <button className='mapbox__spot-icon'>
+          <span>
+            <i className='fas fa-map-pin'></i>
+          </span>
+        </button>
       </Marker>
-      ))}
     </ReactMapGL>
   );
 };
 
 export default Map;
-
-// mapboxgl.accessToken =
-//     "pk.eyJ1Ijoici1tYWxvbmV5IiwiYSI6ImNra2owMWlnYTA4NDMycG1qb3JqZ2Q1NzcifQ.mlD79-dbzdr4suQkMnyfgw";
-//   const map = new mapboxgl.Map({
-//     container: "YOUR_CONTAINER_ELEMENT_ID",
-//     style: "mapbox://styles/mapbox/streets-v11",
-//   });
