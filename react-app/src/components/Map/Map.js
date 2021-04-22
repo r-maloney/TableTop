@@ -32,7 +32,7 @@ const Map = () => {
               className='mapbox__spot-icon'
               onClick={(e) => {
                 e.preventDefault();
-                //  setSelectedSpot(park)
+                setSelectedBusiness(business);
               }}
             >
               <span>
@@ -41,7 +41,16 @@ const Map = () => {
             </button>
           </Marker>
         ))}
-      {/* <Popup></Popup> */}
+      {selectedBusiness && (
+        <Popup
+          longitude={selectedBusiness.long}
+          latitude={selectedBusiness.lat}
+        >
+          <div>{selectedBusiness.name}</div>
+          <div>{selectedBusiness.description}</div>
+          {/* <img src={selectedBusiness.img_url} alt='business logo' /> */}
+        </Popup>
+      )}
     </ReactMapGL>
   );
 };
