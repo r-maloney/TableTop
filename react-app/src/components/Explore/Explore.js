@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getBusinesses } from "../../store/business";
+import Map from "../Map/Map";
 import Business from "./Business";
 
 const Explore = () => {
@@ -31,6 +32,7 @@ const Explore = () => {
       <div className='explore__container'>
         <div className='explore__category'>
           <h2>Restaurants</h2>
+          <Map />
 
           <div className='explore__business-list'>
             {isLoaded &&
