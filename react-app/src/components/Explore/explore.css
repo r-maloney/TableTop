@@ -15,13 +15,18 @@ a div {
 
 .explore__business-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .explore__business-card {
   margin: 1rem;
+  overflow: hidden;
+  width: 95%;
+  height: 18rem;
   /* background-color: #878787; */
   box-shadow: 3px 3px 5px rgb(224, 224, 224);
   border: 1px solid rgb(224, 224, 224);
@@ -34,8 +39,7 @@ a div {
 }
 
 .business__container {
-  /* width: 14rem; */
-  /* height: 24rem; */
+  width: 100%;
   display: grid;
   color: black;
   justify-content: center;
@@ -49,7 +53,9 @@ a div {
 }
 
 .business__img {
-  width: 20rem;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
   justify-self: center;
 }
 

@@ -28,11 +28,10 @@ const Explore = () => {
 
   return (
     <div className='explore__root'>
-      <h1></h1>
       <div className='explore__container'>
         <Map />
         <div className='explore__category'>
-          <h2>Restaurants</h2>
+          <h2>Local Restaurants</h2>
 
           <div className='explore__business-list'>
             {isLoaded &&
