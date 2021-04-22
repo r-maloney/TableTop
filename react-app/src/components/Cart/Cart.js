@@ -14,21 +14,6 @@ const Cart = ({ showCart, setShowCart }) => {
   const user = useSelector((state) => state.session.user);
   const cart = useSelector((state) => state.cart);
   const cartItems = Object.values(cart.items);
-  // console.log(cart);
-
-  // const cartArr = cart.items;
-  // const cartCount = {};
-
-  // for (let item of cartArr) {
-  //   if (cartCount[item.id]) {
-  //     cartCount[item.id].quantity++;
-  //   } else {
-  //     item["quantity"] = 1;
-  //     cartCount[item.id] = item;
-  //   }
-  // }
-
-  // const cartSet = Object.values(cartCount);
 
   useEffect(() => {
     if (user) dispatch(getCart(user));

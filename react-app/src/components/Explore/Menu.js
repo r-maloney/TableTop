@@ -4,7 +4,7 @@ import { getItems } from "../../store/item";
 import { addToCart } from "../../store/cart";
 import "./Explore.css";
 
-const Menu = ({ business, orderId, addMessage }) => {
+const Menu = ({ business, orderId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,7 +13,6 @@ const Menu = ({ business, orderId, addMessage }) => {
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const [cart, setCart] = useState({});
 
   useEffect(() => {
     if (business) {
@@ -25,34 +24,6 @@ const Menu = ({ business, orderId, addMessage }) => {
   if (!isLoaded) {
     return null;
   }
-
-  // const addItemToCart = async (item) => {
-  //   if (cart[item.id]) {
-  //     cart[item.id].count += 1;
-  //     setCart(cart);
-  //   } else {
-  //     cart[item.id] = { count: 1, item: item };
-  //     setCart(cart);
-  //   }
-  //   addMessage(item);
-  //   const res = await dispatch(addToCart(item, orderId));
-  //   console.log(res);
-  // };
-
-  //redux state(doesn't persist reload)
-  // const addToCart = async (item) => {
-  //   // let newCart = { ...cart };
-  //   if (cart[item.id]) {
-  //     cart[item.id].count += 1;
-  //     setCart(cart);
-  //   } else {
-  //     cart[item.id] = { count: 1, item: item };
-  //     setCart(cart);
-  //   }
-  //   addMessage(item);
-  //   const res = await dispatch(userCart(user, cart));
-  //   console.log(res);
-  // };
 
   return (
     <>
@@ -67,7 +38,7 @@ const Menu = ({ business, orderId, addMessage }) => {
             </div>
             <button
               className='button__add-to-order'
-              // onClick={() => addItemToCart(item)}
+              onClick={() => dispatch(addToCart(item, orderId))}
             >
               Add to Order
             </button>
