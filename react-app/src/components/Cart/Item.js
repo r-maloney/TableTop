@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { addToCart, removeFromCart } from "../../store/cart";
+import { addToCart, removeFromCart, removeItem } from "../../store/cart";
 
 const Item = ({ item, count, cart }) => {
   const dispatch = useDispatch();
@@ -11,6 +11,11 @@ const Item = ({ item, count, cart }) => {
     setQuantity(() => quantity + 1);
   };
   const decreaseCount = async (item) => {
+    if (quantity <= 1) {
+      await dispatch(removeItem(item, cart.id));
+      setQuantity(() => quantity - 1);
+      return;
+    }
     await dispatch(removeFromCart(item, cart.id));
     setQuantity(() => quantity - 1);
   };
