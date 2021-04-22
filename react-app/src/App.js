@@ -27,7 +27,6 @@ function App() {
       if (!user.errors) {
         setAuthenticated(true);
         await dispatch(getCart(user));
-        console.log(user.id);
         setOrderId(user.id);
       }
       setLoaded(true);

@@ -8,10 +8,9 @@ a div {
 }
 
 .explore__container {
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  /* background-color: #878787; */
+  width: 100%;
+  display: grid;
+  grid-template-columns: 35rem auto;
 }
 
 .explore__business-list {
@@ -181,9 +180,9 @@ a div {
 
 .mapbox__spot-icon {
   color: #f0881e;
-  position: relative;
+  /* position: relative;
   top: -1.33rem;
-  left: -1.33rem;
+  left: -1.33rem; */
   border: none;
   background: none;
   cursor: pointer;

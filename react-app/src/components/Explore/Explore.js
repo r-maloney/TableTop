@@ -30,9 +30,9 @@ const Explore = () => {
     <div className='explore__root'>
       <h1></h1>
       <div className='explore__container'>
+        <Map />
         <div className='explore__category'>
           <h2>Restaurants</h2>
-          <Map />
 
           <div className='explore__business-list'>
             {isLoaded &&
