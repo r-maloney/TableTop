@@ -8,20 +8,20 @@ cart_routes = Blueprint('cart', __name__)
 @cart_routes.route('/<int:id>')
 def cart(id):
     order = Order.query.filter_by(user_id=id, in_progress=True).first()
-    order_items = Order_Items.query.filter_by(order_id=order.id).all()
-    itemsList = [Item.query.filter(
-        Item.id == item.item_id).first().to_dict() for item in order_items]
+    # order_items = Order_Items.query.filter_by(order_id=order.id).all()
+    # itemsList = [Item.query.filter(
+    #     Item.id == item.item_id).first().to_dict() for item in order_items]
     if order:
-        result = order.to_dict()
-        result["items"] = itemsList
-        return jsonify(result)
+        # result = order.to_dict()
+        # result["items"] = itemsList
+        return jsonify(order.to_dict())
     else:
         new_order = Order(user_id=id, in_progress=True)
         db.session.add(new_order)
         db.session.commit()
-        result = new_order.to_dict()
-        result["items"] = itemsList
-        return jsonify(result)
+        # result = new_order.to_dict()
+        # result["items"] = itemsList
+        return jsonify(new_order.to_dict())
 
 
 @cart_routes.route('/<int:id>', methods=['POST'])

@@ -28,29 +28,32 @@ class Order(db.Model):
             # "donation_amount": self.calculate_donation(),
             "user": self.user.to_dict(),
             "order_date": self.date_created,
+            "items": self.order_items
         }
 
     @property
     def order_items(self):
         order_items = Order_Items.query.filter_by(order_id=self.id).all()
-        items = []
+        items = {}
         for order_item in order_items:
-            item = Item.query.filter_by(id=order_item.item_id).first()
-            items.append(item.to_dict())
+            if order_item.id in items:
+                items[order_item.id][count] += 1
+            else:
+                item = Item.query.filter_by(id=order_item.item_id).first()
+                items[order_item.item_id] = {
+                    "count": 1, "item": item.to_dict()}
         return items
 
     def calculate_total(self):
         if self.order_items is None:
             return 0
-        for item in self.order_items:
-            prices = [item['price'] for item in self.order_items]
-            total = sum(prices)
-        return total
+        prices = [item['item']['price']
+                  for item in self.order_items.values()]
+        return sum(prices)
 
     def calculate_donation(self):
         if self.items is none:
             return 0
         donations = [item.donation_percentage *
                      item.price for item in self.items]
-        sum = sum(donations)
-        return sum
+        return sum(donations)
