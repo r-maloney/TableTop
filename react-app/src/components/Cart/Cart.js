@@ -13,14 +13,17 @@ const Cart = ({ showCart, setShowCart }) => {
 
   const user = useSelector((state) => state.session.user);
   const cart = useSelector((state) => state.cart);
-  const cartItems = Object.values(cart.items);
+  let cartItems = null;
+  if (cart.items) {
+    cartItems = Object.values(cart.items);
+  }
 
   useEffect(() => {
     if (user) dispatch(getCart(user));
   }, [dispatch, user]);
 
   useEffect(() => {
-    if (cart) {
+    if (cart.items) {
       setLoaded(true);
     }
   }, [setLoaded, cart]);

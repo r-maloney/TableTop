@@ -29,7 +29,7 @@ const Explore = () => {
   return (
     <div className='explore__root'>
       <div className='explore__container'>
-        <Map />
+        {isLoaded && <Map />}
         <div className='explore__category'>
           <h2>Local Restaurants</h2>
 

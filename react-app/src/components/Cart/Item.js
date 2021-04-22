@@ -5,6 +5,7 @@ import { addToCart, removeFromCart, removeItem } from "../../store/cart";
 const Item = ({ item, count, cart }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(count);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const increaseCount = async (item) => {
     await dispatch(addToCart(item, cart.id));
@@ -20,17 +21,25 @@ const Item = ({ item, count, cart }) => {
     setQuantity(() => quantity - 1);
   };
 
+  if (item && cart) {
+    setIsLoaded(true);
+  }
+
   return (
-    <div key={item.id} className='cart__item'>
-      <div className='cart__name'>{item.name}</div>
-      <button className='cart__minus' onClick={() => decreaseCount(item)}>
-        -
-      </button>
-      <div className='cart__count'>{quantity}</div>
-      <button className='cart__plus' onClick={() => increaseCount(item)}>
-        +
-      </button>
-    </div>
+    <>
+      {isLoaded && (
+        <div key={item.id} className='cart__item'>
+          <div className='cart__name'>{item.name}</div>
+          <button className='cart__minus' onClick={() => decreaseCount(item)}>
+            -
+          </button>
+          <div className='cart__count'>{quantity}</div>
+          <button className='cart__plus' onClick={() => increaseCount(item)}>
+            +
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 
