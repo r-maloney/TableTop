@@ -1,13 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getItems } from "../../store/item";
 import { addToCart } from "../../store/cart";
-import { userCart } from "../../store/session";
 import "./Explore.css";
 
 const Menu = ({ business, orderId, addMessage }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getItems());
@@ -28,18 +26,18 @@ const Menu = ({ business, orderId, addMessage }) => {
     return null;
   }
 
-  const addItemToCart = async (item) => {
-    if (cart[item.id]) {
-      cart[item.id].count += 1;
-      setCart(cart);
-    } else {
-      cart[item.id] = { count: 1, item: item };
-      setCart(cart);
-    }
-    addMessage(item);
-    const res = await dispatch(addToCart(item, orderId));
-    console.log(res);
-  };
+  // const addItemToCart = async (item) => {
+  //   if (cart[item.id]) {
+  //     cart[item.id].count += 1;
+  //     setCart(cart);
+  //   } else {
+  //     cart[item.id] = { count: 1, item: item };
+  //     setCart(cart);
+  //   }
+  //   addMessage(item);
+  //   const res = await dispatch(addToCart(item, orderId));
+  //   console.log(res);
+  // };
 
   //redux state(doesn't persist reload)
   // const addToCart = async (item) => {
@@ -69,7 +67,7 @@ const Menu = ({ business, orderId, addMessage }) => {
             </div>
             <button
               className='button__add-to-order'
-              onClick={() => addItemToCart(item)}
+              // onClick={() => addItemToCart(item)}
             >
               Add to Order
             </button>

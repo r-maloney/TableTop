@@ -2,9 +2,9 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToCart, removeFromCart } from "../../store/cart";
 
-const Item = ({ item, cart }) => {
+const Item = ({ item, count, cart }) => {
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(item.quantity);
+  const [quantity, setQuantity] = useState(count);
 
   const increaseCount = async (item) => {
     await dispatch(addToCart(item, cart.id));

@@ -48,6 +48,7 @@ export const getCart = (user) => async (dispatch) => {
   const res = await fetch(`/api/cart/${user.id}`);
   if (res.ok) {
     const cart = await res.json();
+    console.log(cart);
     if (cart.id) {
       await dispatch(setCart(cart));
       return cart;

@@ -1,14 +1,10 @@
-import { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./splash.css";
 import donateIcon from "../../images/icons/heart_box_donation.png";
 import shopIcon from "../../images/icons/shop_store.png";
 import charityIcon from "../../images/icons/charity_donation.png";
-import SignUpForm from "../auth/SignUpForm";
 
 const Splash = ({ authenticated, setAuthenticated }) => {
-  const [registration, setRegistration] = useState(false);
-
   return (
     <div className='splash__container'>
       <div className='splash__header'>
