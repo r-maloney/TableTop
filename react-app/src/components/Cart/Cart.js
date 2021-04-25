@@ -57,6 +57,7 @@ const Cart = ({ showCart, setShowCart }) => {
                 cart={cart}
                 key={item.id}
               />
+              // <div></div>
             ))}
         </div>
         <p>Amount Due: {cart.total}</p>
