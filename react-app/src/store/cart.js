@@ -84,9 +84,11 @@ const cartReducer = (state = initialState, action) => {
   let newCart = { ...state };
   switch (action.type) {
     case SET_CART:
+      console.log("CART", newCart, "Payload", action.payload);
       newCart = action.payload;
       return newCart;
     case ADD_CART:
+      console.log("UPDATING COUNT", newCart.items[action.payload.id]);
       if (newCart.items[action.payload.id]) {
         newCart.items[action.payload.id].count++;
       } else {

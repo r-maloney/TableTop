@@ -36,8 +36,8 @@ class Order(db.Model):
         order_items = Order_Items.query.filter_by(order_id=self.id).all()
         items = {}
         for order_item in order_items:
-            if order_item.id in items:
-                items[order_item.id][count] += 1
+            if order_item.item_id in items:
+                items[order_item.item_id]["count"] += 1
             else:
                 item = Item.query.filter_by(id=order_item.item_id).first()
                 items[order_item.item_id] = {
