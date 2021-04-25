@@ -1,8 +1,8 @@
-const SET_BUSINESS = "business/setBusiness";
+const SET_BUSINESSES = "businesses/setBusinesses";
 
 const setBusinesses = (business) => {
   return {
-    type: SET_BUSINESS,
+    type: SET_BUSINESSES,
     payload: business,
   };
 };
@@ -12,21 +12,20 @@ export const getBusinesses = () => async (dispatch) => {
   if (res.ok) {
     const { businesses } = await res.json();
     await dispatch(setBusinesses(businesses));
-    console.log(businesses);
     return res;
   }
 };
 
-const initialState = { business: null };
+const initialState = { businesses: null };
 
 const businessReducer = (state = initialState, action) => {
-  // let newState;
   switch (action.type) {
-    case SET_BUSINESS:
-      // newState = Object.assign({}, state);
-      // newState.business = action.payload;
-
-      return { ...action.payload };
+    case SET_BUSINESSES:
+      let newState = {};
+      for (let business of action.payload) {
+        newState[business.id] = business;
+      }
+      return newState;
     default:
       return state;
   }

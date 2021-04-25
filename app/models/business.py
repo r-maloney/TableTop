@@ -33,5 +33,7 @@ class Business(db.Model):
             "img_url": self.img_url,
             "rating": self.rating,
             "type": self.type,
-            "items": items
+            "items": items,
+            "lat": self.latitude,
+            "long": self.longitude
         }

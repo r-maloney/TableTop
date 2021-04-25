@@ -12,7 +12,7 @@ const Explore = () => {
     dispatch(getBusinesses());
   }, [dispatch]);
 
-  let businesses = useSelector((state) => state.business);
+  let businesses = useSelector((state) => state.businesses);
   let restaurants = Object.values(businesses);
   // if (businesses[0]) {
   //   restaurants = Object.values(businesses).filter(
@@ -29,7 +29,7 @@ const Explore = () => {
   return (
     <div className='explore__root'>
       <div className='explore__container'>
-        <Map />
+        {isLoaded && <Map />}
         <div className='explore__category'>
           <h2>Local Restaurants</h2>
 

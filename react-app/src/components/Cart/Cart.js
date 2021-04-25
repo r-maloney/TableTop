@@ -13,29 +13,20 @@ const Cart = ({ showCart, setShowCart }) => {
 
   const user = useSelector((state) => state.session.user);
   const cart = useSelector((state) => state.cart);
-  const cartArr = cart.items;
-  const cartCount = {};
-
-  for (let item of cartArr) {
-    if (cartCount[item.id]) {
-      cartCount[item.id].quantity++;
-    } else {
-      item["quantity"] = 1;
-      cartCount[item.id] = item;
-    }
+  let cartItems = null;
+  if (cart.items) {
+    cartItems = Object.values(cart.items);
   }
-
-  const cartSet = Object.values(cartCount);
 
   useEffect(() => {
     if (user) dispatch(getCart(user));
   }, [dispatch, user]);
 
   useEffect(() => {
-    if (cartArr) {
+    if (cart.items) {
       setLoaded(true);
     }
-  }, [setLoaded, cartArr]);
+  }, [setLoaded, cart]);
 
   if (!loaded) {
     return <div className='cart__empty'>Nothing in your cart yet</div>;
@@ -58,7 +49,16 @@ const Cart = ({ showCart, setShowCart }) => {
       </div>
       <div className='cart__container'>
         <div>
-          {loaded && cartSet.map((item) => <Item item={item} cart={cart} />)}
+          {loaded &&
+            cartItems.map((item) => (
+              <Item
+                item={item.item}
+                count={item.count}
+                cart={cart}
+                key={item.id}
+              />
+              // <div></div>
+            ))}
         </div>
         <p>Amount Due: {cart.total}</p>
         <p>Donation Amount: GOING TO ....</p>

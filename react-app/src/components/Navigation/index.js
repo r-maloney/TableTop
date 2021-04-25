@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import logo from "../../images/logos/TTLogo.png";
 import LoginModal from "../auth/LoginModal";
@@ -29,7 +29,7 @@ const Navigation = ({
             <NavLink to='/give' exact={true} activeClassName='active'>
               Give
             </NavLink>
-            <Link onClick={() => setShowCart(!showCart)}>Cart</Link>
+            <button onClick={() => setShowCart(!showCart)}>Cart</button>
           </>
         )}
       </div>
