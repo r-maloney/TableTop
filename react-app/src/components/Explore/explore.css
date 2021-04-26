@@ -186,6 +186,10 @@ a div {
   height: 3rem;
 }
 
+.business--active {
+  height: 20rem;
+}
+
 .mapbox__spot-icon {
   color: #f0881e;
   border: none;

@@ -4,7 +4,7 @@ import ReactMapGL, { Marker, Popup, FlyToInterpolator } from "react-map-gl";
 import Business from "../Explore/Business";
 import "../Explore/Explore.css";
 
-const Map = () => {
+const Map = ({ setActiveBusiness }) => {
   const [selectedBusiness, setSelectedBusiness] = useState(null);
   const businesses = useSelector((state) => Object.values(state.businesses));
 
@@ -44,6 +44,7 @@ const Map = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   setSelectedBusiness(business);
+                  setActiveBusiness(business);
                   console.log(viewport);
                   setViewport({
                     ...viewport,

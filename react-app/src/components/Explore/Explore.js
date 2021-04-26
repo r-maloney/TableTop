@@ -7,6 +7,7 @@ import Business from "./Business";
 const Explore = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [activeBusiness, setActiveBusiness] = useState();
 
   useEffect(() => {
     dispatch(getBusinesses());
@@ -14,14 +15,9 @@ const Explore = () => {
 
   let businesses = useSelector((state) => state.businesses);
   let restaurants = Object.values(businesses);
-  // if (businesses[0]) {
-  //   restaurants = Object.values(businesses).filter(
-  //     (b) => b.type === "Restaurant"
-  //   );
-  // }
+
   useEffect(() => {
     if (restaurants[0] !== null) {
-      // console.log("check", restaurants);
       setIsLoaded(true);
     }
   }, [restaurants]);
@@ -29,10 +25,13 @@ const Explore = () => {
   return (
     <div className='explore__root'>
       <div className='explore__container'>
-        {isLoaded && <Map />}
+        {isLoaded && <Map setActiveBusiness={setActiveBusiness} />}
         <div className='explore__category'>
           <h2>Local Restaurants</h2>
-
+          {activeBusiness && (
+            // <div className='business--active'></div>
+            <Business business={activeBusiness} />
+          )}
           <div className='explore__business-list'>
             {isLoaded &&
               restaurants.map((business) => (
