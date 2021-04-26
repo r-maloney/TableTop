@@ -29,7 +29,9 @@ const Map = () => {
             <Marker
               latitude={business.lat}
               longitude={business.long}
-              offset={[0, -50 / 2]}
+              offsetLeft={-15}
+              offsetTop={-40}
+              // offset={[0, -50 / 2]}
             >
               <button
                 className='mapbox__spot-icon'
