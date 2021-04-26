@@ -29,8 +29,17 @@ const Explore = () => {
         <div className='explore__category'>
           <h2>Local Restaurants</h2>
           {activeBusiness && (
-            // <div className='business--active'></div>
-            <Business business={activeBusiness} />
+            <div className='business__active'>
+              <img
+                src={activeBusiness.img_url}
+                alt={`${activeBusiness.name} profile`}
+              ></img>
+              <div className='business__active-description'>
+                <h2>{activeBusiness.name}</h2>
+                <h3>{activeBusiness.rating}</h3>
+                <h3>{activeBusiness.description}</h3>
+              </div>
+            </div>
           )}
           <div className='explore__business-list'>
             {isLoaded &&

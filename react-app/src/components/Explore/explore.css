@@ -186,8 +186,33 @@ a div {
   height: 3rem;
 }
 
-.business--active {
-  height: 20rem;
+.business__active {
+  display: grid;
+  grid-template-columns: 18rem auto;
+  height: 23rem;
+  width: 30rem;
+
+  justify-items: center;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 1px rgb(219, 219, 219);
+}
+
+.business__active img {
+  height: 18rem;
+  max-width: 18rem;
+}
+.business__active-description {
+  margin-left: 0.5rem;
+}
+.business__active-description h2 {
+  font-size: 2rem;
+}
+
+.business__active-description h3 {
+  font-size: 1.3rem;
+  color: #878787;
 }
 
 .mapbox__spot-icon {
@@ -201,48 +226,32 @@ a div {
 }
 
 .map__popup {
-  max-height: 16rem;
-  max-width: 16rem;
+  height: 5rem;
+  width: 16rem;
   overflow: hidden;
-  margin: 0.3rem;
+  /* margin: 0.3rem; */
   position: relative;
   box-sizing: border-box;
 }
 
-.map__popup img {
-  width: 100%;
-}
 .map__popup h2 {
-  color: white;
   font-size: 1.4rem;
-  height: 1.8rem;
+  height: 2.2rem;
   overflow: hidden;
+  background-color: #f0881e;
+  padding: 0.3rem;
+  color: white;
 }
 
 .map__popup h3 {
   font-size: 1rem;
-  color: rgb(197, 194, 194);
+  color: #878787;
   height: auto;
   overflow: hidden;
-}
-
-.map__popup div {
-  position: absolute;
-  bottom: 0rem;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 99;
-  height: 4rem;
-  width: 100%;
   padding: 0.3rem;
+  padding-bottom: 0;
 }
 
 .mapbox__spot-icon span {
   font-size: 2rem;
-}
-
-.mapboxgl-popup-close-button {
-}
-
-.mapboxgl-popup-content {
-  background: red;
 }

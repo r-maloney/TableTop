@@ -72,13 +72,16 @@ const Map = ({ setActiveBusiness }) => {
               onClick={() => console.log("CLICKED")}
             >
               <div className='map__popup'>
-                <img
+                {/* <img
                   src={selectedBusiness.img_url}
                   alt={`${selectedBusiness.name} profile`}
-                ></img>
-                <div>
+                ></img> */}
+                <div
+                // style={{ backgroundImage: `url(${selectedBusiness.img_url}` }}
+                >
                   <h2>{selectedBusiness.name}</h2>
-                  <h3>{selectedBusiness.description}</h3>
+                  <h3>{selectedBusiness.address}</h3>
+                  <h3>{`${selectedBusiness.city}, ${selectedBusiness.state}`}</h3>
                 </div>
               </div>
               {/* <div
