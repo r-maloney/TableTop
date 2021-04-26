@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getBusinesses } from "../../store/business";
 import Map from "../Map/Map";
 import Business from "./Business";
@@ -7,6 +8,7 @@ import Business from "./Business";
 const Explore = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [activeBusiness, setActiveBusiness] = useState();
 
   useEffect(() => {
     dispatch(getBusinesses());
@@ -14,14 +16,9 @@ const Explore = () => {
 
   let businesses = useSelector((state) => state.businesses);
   let restaurants = Object.values(businesses);
-  // if (businesses[0]) {
-  //   restaurants = Object.values(businesses).filter(
-  //     (b) => b.type === "Restaurant"
-  //   );
-  // }
+
   useEffect(() => {
     if (restaurants[0] !== null) {
-      // console.log("check", restaurants);
       setIsLoaded(true);
     }
   }, [restaurants]);
@@ -29,15 +26,32 @@ const Explore = () => {
   return (
     <div className='explore__root'>
       <div className='explore__container'>
-        {isLoaded && <Map />}
+        {isLoaded && <Map setActiveBusiness={setActiveBusiness} />}
         <div className='explore__category'>
-          <h2>Local Restaurants</h2>
-
+          {activeBusiness && (
+            <div className='business__active'>
+              <img
+                src={activeBusiness.img_url}
+                alt={`${activeBusiness.name} profile`}
+              ></img>
+              <div className='business__active-description'>
+                <h2>{activeBusiness.name}</h2>
+                <h3>{activeBusiness.rating}</h3>
+                <h3>{activeBusiness.description}</h3>
+                <NavLink to={`/explore/${activeBusiness.id}`}>
+                  Click to see menu ...
+                </NavLink>
+              </div>
+            </div>
+          )}
           <div className='explore__business-list'>
             {isLoaded &&
               restaurants.map((business) => (
                 <div key={business.id} className='explore__business-card'>
-                  <Business business={business} />
+                  <Business
+                    business={business}
+                    setActiveBusiness={setActiveBusiness}
+                  />
                 </div>
               ))}
           </div>

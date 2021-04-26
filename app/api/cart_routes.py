@@ -19,7 +19,6 @@ def cart(id):
 
 @cart_routes.route('/<int:id>', methods=['POST'])
 def add_to_cart(id):
-    print("ID"*200, id)
     item = request.get_json()
     new_order_item = Order_Items(order_id=id, item_id=item['id'])
     db.session.add(new_order_item)

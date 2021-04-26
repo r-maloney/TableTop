@@ -35,5 +35,8 @@ class Business(db.Model):
             "type": self.type,
             "items": items,
             "lat": self.latitude,
-            "long": self.longitude
+            "long": self.longitude,
+            "address": self.address,
+            "city": self.city,
+            "state": self.state
         }

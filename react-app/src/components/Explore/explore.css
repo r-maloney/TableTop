@@ -1,14 +1,17 @@
+#root {
+}
+
 a div {
   color: black;
 }
 
 .explore__root {
-  background-color: #fafafa;
-  /* background-color: #f0881e; */
+  background-color: white;
 }
 
 .explore__container {
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 35rem auto;
 }
@@ -20,6 +23,8 @@ a div {
   justify-items: center;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  height: 100%;
+  overflow: scroll;
 }
 
 .explore__business-card {
@@ -45,11 +50,19 @@ a div {
   justify-content: center;
 }
 
+.business__container button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
 .business__name {
   color: black;
   font-size: 1.5rem;
   text-align: center;
   padding: 0.5rem;
+  overflow: hidden;
+  height: 2rem;
 }
 
 .business__img {
@@ -184,11 +197,37 @@ a div {
   height: 3rem;
 }
 
+.business__active {
+  display: grid;
+  grid-template-columns: 18rem auto;
+  height: 23rem;
+  width: 30rem;
+
+  justify-items: center;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 1px rgb(219, 219, 219);
+}
+
+.business__active img {
+  height: 18rem;
+  max-width: 18rem;
+}
+.business__active-description {
+  margin-left: 0.5rem;
+}
+.business__active-description h2 {
+  font-size: 2rem;
+}
+
+.business__active-description h3 {
+  font-size: 1.3rem;
+  color: #878787;
+}
+
 .mapbox__spot-icon {
   color: #f0881e;
-  /* position: relative;
-  top: -1.33rem;
-  left: -1.33rem; */
   border: none;
   background: none;
   cursor: pointer;
@@ -196,6 +235,34 @@ a div {
   height: 50px;
   width: 5px;
 }
+
+.map__popup {
+  height: 5rem;
+  width: 16rem;
+  overflow: hidden;
+  /* margin: 0.3rem; */
+  position: relative;
+  box-sizing: border-box;
+}
+
+.map__popup h2 {
+  font-size: 1.4rem;
+  height: 2.2rem;
+  overflow: hidden;
+  background-color: #f0881e;
+  padding: 0.3rem;
+  color: white;
+}
+
+.map__popup h3 {
+  font-size: 1rem;
+  color: #878787;
+  height: auto;
+  overflow: hidden;
+  padding: 0.3rem;
+  padding-bottom: 0;
+}
+
 .mapbox__spot-icon span {
   font-size: 2rem;
 }

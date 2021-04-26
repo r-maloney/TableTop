@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, FlyToInterpolator } from "react-map-gl";
+import Business from "../Explore/Business";
 import "../Explore/Explore.css";
 
-const Map = () => {
+const Map = ({ setActiveBusiness }) => {
+  const [selectedBusiness, setSelectedBusiness] = useState(null);
   const businesses = useSelector((state) => Object.values(state.businesses));
 
   const [viewport, setViewport] = useState({
-    latitude: 38.90882113835013,
-    longitude: -76.99803202807391,
-    zoom: 11,
+    latitude: 38.902357299811044,
+    longitude: -77.02530355720046,
+    zoom: 12,
     width: "100%",
     height: "100vh",
   });
 
-  const [selectedBusiness, setSelectedBusiness] = useState(null);
+  // function flyToStore(currentFeature) {
+  //   map.flyTo({
+  //     center: currentFeature.geometry.coordinates,
+  //     zoom: 15,
+  //   });
+  // }
 
   return (
     <>
@@ -29,13 +36,25 @@ const Map = () => {
             <Marker
               latitude={business.lat}
               longitude={business.long}
-              offset={[0, -50 / 2]}
+              offsetLeft={-15}
+              offsetTop={-40}
             >
               <button
                 className='mapbox__spot-icon'
                 onClick={(e) => {
                   e.preventDefault();
                   setSelectedBusiness(business);
+                  setActiveBusiness(business);
+                  console.log(viewport);
+                  setViewport({
+                    ...viewport,
+                    latitude: business.lat,
+                    longitude: business.long,
+                    zoom: 15,
+                    transitionDuration: 500,
+                    transitionInterpolator: new FlyToInterpolator(),
+                  });
+                  // setZoom(15);
                 }}
               >
                 <span>
@@ -48,11 +67,30 @@ const Map = () => {
             <Popup
               longitude={selectedBusiness.long}
               latitude={selectedBusiness.lat}
+              offsetTop={-30}
               onClose={() => setSelectedBusiness(null)}
+              onClick={() => console.log("CLICKED")}
             >
-              <div>{selectedBusiness.name}</div>
-              <div>{selectedBusiness.description}</div>
-              {/* <img src={selectedBusiness.img_url} alt='business logo' /> */}
+              <div className='map__popup'>
+                {/* <img
+                  src={selectedBusiness.img_url}
+                  alt={`${selectedBusiness.name} profile`}
+                ></img> */}
+                <div
+                // style={{ backgroundImage: `url(${selectedBusiness.img_url}` }}
+                >
+                  <h2>{selectedBusiness.name}</h2>
+                  <h3>{selectedBusiness.address}</h3>
+                  <h3>{`${selectedBusiness.city}, ${selectedBusiness.state}`}</h3>
+                </div>
+              </div>
+              {/* <div
+                key={selectedBusiness.id}
+                className='explore__business-card'
+                style={{ width: "14rem", margin: "0", padding: "0" }}
+              >
+                <Business business={selectedBusiness} />
+              </div> */}
             </Popup>
           )}
         </ReactMapGL>
