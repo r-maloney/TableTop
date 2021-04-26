@@ -25,7 +25,7 @@ class Order(db.Model):
         return {
             "id": self.id,
             "total": self.calculate_total(),
-            # "donation_amount": self.calculate_donation(),
+            "donation_amount": self.calculate_donation(),
             "user": self.user.to_dict(),
             "order_date": self.date_created,
             "items": self.order_items
@@ -52,8 +52,9 @@ class Order(db.Model):
         return sum(prices)
 
     def calculate_donation(self):
-        if self.items is none:
+        if self.order_items is None:
             return 0
-        donations = [item.donation_percentage *
-                     item.price for item in self.items]
-        return sum(donations)
+        donations = [item["item"]["donation_percentage"] *
+                     item['item']['price'] for item in self.order_items.values()]
+        print("DONATIONS"*20, round(sum(donations), 2))
+        return round(sum(donations), 2)

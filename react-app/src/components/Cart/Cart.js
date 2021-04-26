@@ -20,6 +20,10 @@ const Cart = ({ showCart, setShowCart }) => {
 
   useEffect(() => {
     if (user) dispatch(getCart(user));
+  }, [dispatch, user, cart.total]);
+
+  useEffect(() => {
+    if (user) dispatch(getCart(user));
   }, [dispatch, user]);
 
   useEffect(() => {
@@ -33,6 +37,7 @@ const Cart = ({ showCart, setShowCart }) => {
   }
 
   const handleSubmit = () => {
+    setShowCart(false);
     history.push("/thank-you");
   };
 
@@ -60,8 +65,8 @@ const Cart = ({ showCart, setShowCart }) => {
               // <div></div>
             ))}
         </div>
-        <p>Amount Due: {cart.total}</p>
-        <p>Donation Amount: GOING TO ....</p>
+        <p>Amount Due: ${cart.total}</p>
+        <p>Donation Amount: ${parseFloat(cart.donation_amount).toFixed(2)}</p>
         <button className='cart__order' onClick={handleSubmit}>
           Order Now
         </button>
