@@ -1,14 +1,17 @@
+#root {
+}
+
 a div {
   color: black;
 }
 
 .explore__root {
-  background-color: #fafafa;
-  /* background-color: #f0881e; */
+  background-color: white;
 }
 
 .explore__container {
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 35rem auto;
 }
@@ -20,6 +23,8 @@ a div {
   justify-items: center;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  height: 100%;
+  overflow: scroll;
 }
 
 .explore__business-card {
@@ -43,6 +48,12 @@ a div {
   display: grid;
   color: black;
   justify-content: center;
+}
+
+.business__container button {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .business__name {

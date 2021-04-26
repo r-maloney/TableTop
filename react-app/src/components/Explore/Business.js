@@ -1,10 +1,10 @@
 import "./Explore.css";
 import { NavLink } from "react-router-dom";
 
-const Business = ({ business }) => {
+const Business = ({ business, setActiveBusiness }) => {
   return (
     <div className='business__container'>
-      <NavLink to={`/explore/${business.id}`}>
+      <button onClick={() => setActiveBusiness(business)}>
         <img
           className='business__img'
           src={business.img_url}
@@ -14,7 +14,7 @@ const Business = ({ business }) => {
         <div className='business__rating'>Rating: {business.rating}</div>
         <div className='business__description'>{business.description}</div>
         {/* <div className='business__type'>{business.type}</div> */}
-      </NavLink>
+      </button>
     </div>
   );
 };

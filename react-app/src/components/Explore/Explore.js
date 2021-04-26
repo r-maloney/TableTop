@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getBusinesses } from "../../store/business";
 import Map from "../Map/Map";
 import Business from "./Business";
@@ -27,7 +28,6 @@ const Explore = () => {
       <div className='explore__container'>
         {isLoaded && <Map setActiveBusiness={setActiveBusiness} />}
         <div className='explore__category'>
-          <h2>Local Restaurants</h2>
           {activeBusiness && (
             <div className='business__active'>
               <img
@@ -38,6 +38,9 @@ const Explore = () => {
                 <h2>{activeBusiness.name}</h2>
                 <h3>{activeBusiness.rating}</h3>
                 <h3>{activeBusiness.description}</h3>
+                <NavLink to={`/explore/${activeBusiness.id}`}>
+                  Click to see menu ...
+                </NavLink>
               </div>
             </div>
           )}
@@ -45,7 +48,10 @@ const Explore = () => {
             {isLoaded &&
               restaurants.map((business) => (
                 <div key={business.id} className='explore__business-card'>
-                  <Business business={business} />
+                  <Business
+                    business={business}
+                    setActiveBusiness={setActiveBusiness}
+                  />
                 </div>
               ))}
           </div>
