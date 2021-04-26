@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getCart } from "../../store/cart";
+import { getCart, emptyCart } from "../../store/cart";
 import Item from "./Item";
 import "./Cart.css";
 import "../Explore/Explore.css";
@@ -38,6 +38,7 @@ const Cart = ({ showCart, setShowCart }) => {
 
   const handleSubmit = () => {
     setShowCart(false);
+    dispatch(emptyCart(cart.id));
     history.push("/thank-you");
   };
 
@@ -53,7 +54,7 @@ const Cart = ({ showCart, setShowCart }) => {
         <h1>Shopping Cart</h1>
       </div>
       <div className='cart__container'>
-        <div>
+        <div className='cart__items-list'>
           {loaded &&
             cartItems.map((item) => (
               <Item
@@ -65,11 +66,22 @@ const Cart = ({ showCart, setShowCart }) => {
               // <div></div>
             ))}
         </div>
-        <p>Amount Due: ${cart.total}</p>
-        <p>Donation Amount: ${parseFloat(cart.donation_amount).toFixed(2)}</p>
-        <button className='cart__order' onClick={handleSubmit}>
-          Order Now
-        </button>
+        <div className='cart__checkout'>
+          <img
+            src={
+              "https://yt3.ggpht.com/ytc/AAUvwnjA89B7GNPXth9gmKh2Ez_mwFoDKdSH3QaCpfTZ9w=s900-c-k-c0x00ffffff-no-rj"
+            }
+            style={{ height: "2rem", position: "float" }}
+          ></img>
+          <h2>
+            Thank you for supporting Phoenix Children's Hospital Foundation!
+          </h2>
+          <p>Amount Due: ${cart.total}</p>
+          <p>Donation Amount: ${parseFloat(cart.donation_amount).toFixed(2)}</p>
+          <button className='cart__order' onClick={handleSubmit}>
+            Order Now
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -78,6 +78,10 @@ export const getCart = (user) => async (dispatch) => {
   }
 };
 
+export const emptyCart = (orderId) => async (dispatch) => {
+  await dispatch(setCart({ id: 13, user_id: 1, in_progress: true }));
+};
+
 const initialState = {};
 
 const cartReducer = (state = initialState, action) => {

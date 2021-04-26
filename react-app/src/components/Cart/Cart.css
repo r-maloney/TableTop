@@ -37,10 +37,26 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  display: grid;
+  grid-template-rows: 70% 10%;
+  height: 100%;
 }
 
 .cart__container h1 {
   font-size: 2rem;
+}
+
+.cart__container p {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+.cart__checkout {
+  height: 5rem;
+  display: end;
+}
+
+.cart__items-list {
+  height: 90%;
 }
 
 .cart__item {
@@ -81,6 +97,8 @@
   width: 6rem;
   border: none;
   border-radius: 0.3rem;
+  margin-top: 1rem;
+  justify-self: center;
 }
 
 .cart__empty {
