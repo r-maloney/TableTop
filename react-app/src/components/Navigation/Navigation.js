@@ -4,13 +4,14 @@ import LogoutButton from "../auth/LogoutButton";
 import logo from "../../images/logos/TTLogo.png";
 import LoginModal from "../auth/LoginModal";
 import SignUpModal from "../auth/SignUpModal";
-import "./navigation.css";
+import "./Navigation.css";
 
 const Navigation = ({
   authenticated,
   setAuthenticated,
   showCart,
   setShowCart,
+  itemCount,
 }) => {
   return (
     <div className='nav__container'>
@@ -29,7 +30,12 @@ const Navigation = ({
             <NavLink to='/give' exact={true} activeClassName='active'>
               Give
             </NavLink>
-            <button onClick={() => setShowCart(!showCart)}>Cart</button>
+            <button onClick={() => setShowCart(!showCart)}>
+              Cart
+              {itemCount !== 0 && (
+                <div className='nav__item-notification'>{itemCount}</div>
+              )}
+            </button>
           </>
         )}
       </div>
