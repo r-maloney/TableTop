@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import Business from "../Explore/Business";
 import "../Explore/Explore.css";
 
 const Map = () => {
@@ -50,11 +51,26 @@ const Map = () => {
             <Popup
               longitude={selectedBusiness.long}
               latitude={selectedBusiness.lat}
+              offsetTop={-30}
               onClose={() => setSelectedBusiness(null)}
             >
-              <div>{selectedBusiness.name}</div>
-              <div>{selectedBusiness.description}</div>
-              {/* <img src={selectedBusiness.img_url} alt='business logo' /> */}
+              <div className='map__popup'>
+                <img
+                  src={selectedBusiness.img_url}
+                  alt={`${selectedBusiness.name} profile`}
+                ></img>
+                <div>
+                  <h2>{selectedBusiness.name}</h2>
+                  <h3>{selectedBusiness.description}</h3>
+                </div>
+              </div>
+              {/* <div
+                key={selectedBusiness.id}
+                className='explore__business-card'
+                style={{ width: "14rem", margin: "0", padding: "0" }}
+              >
+                <Business business={selectedBusiness} />
+              </div> */}
             </Popup>
           )}
         </ReactMapGL>

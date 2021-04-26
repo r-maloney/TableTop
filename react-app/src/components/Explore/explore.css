@@ -50,6 +50,8 @@ a div {
   font-size: 1.5rem;
   text-align: center;
   padding: 0.5rem;
+  overflow: hidden;
+  height: 2rem;
 }
 
 .business__img {
@@ -186,9 +188,6 @@ a div {
 
 .mapbox__spot-icon {
   color: #f0881e;
-  /* position: relative;
-  top: -1.33rem;
-  left: -1.33rem; */
   border: none;
   background: none;
   cursor: pointer;
@@ -196,6 +195,50 @@ a div {
   height: 50px;
   width: 5px;
 }
+
+.map__popup {
+  max-height: 16rem;
+  max-width: 16rem;
+  overflow: hidden;
+  margin: 0.3rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.map__popup img {
+  width: 100%;
+}
+.map__popup h2 {
+  color: white;
+  font-size: 1.4rem;
+  height: 1.8rem;
+  overflow: hidden;
+}
+
+.map__popup h3 {
+  font-size: 1rem;
+  color: rgb(197, 194, 194);
+  height: auto;
+  overflow: hidden;
+}
+
+.map__popup div {
+  position: absolute;
+  bottom: 0rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  height: 4rem;
+  width: 100%;
+  padding: 0.3rem;
+}
+
 .mapbox__spot-icon span {
   font-size: 2rem;
+}
+
+.mapboxgl-popup-close-button {
+}
+
+.mapboxgl-popup-content {
+  background: red;
 }
