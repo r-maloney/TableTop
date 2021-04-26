@@ -21,4 +21,5 @@ def seed_users():
 
 def undo_users():
     db.session.execute('TRUNCATE users CASCADE;')
+    db.session.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1;')
     db.session.commit()

@@ -42,4 +42,5 @@ def seed_items():
 
 def undo_items():
     db.session.execute('TRUNCATE items CASCADE;')
+    db.session.execute('ALTER SEQUENCE items_id_seq RESTART WITH 1;')
     db.session.commit()
