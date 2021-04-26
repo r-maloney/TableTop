@@ -39,4 +39,5 @@ def seed_charities():
 
 def undo_charities():
     db.session.execute('TRUNCATE charities CASCADE;')
+    db.session.execute('ALTER SEQUENCE charities_id_seq RESTART WITH 1;')
     db.session.commit()

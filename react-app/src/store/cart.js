@@ -46,7 +46,7 @@ export const removeFromCart = (item, orderId) => async (dispatch) => {
   };
   const res = await fetch(`/api/cart/${orderId}`, options);
   const json = await res.json();
-  console.log(json);
+
   await dispatch(addCart(item));
   return json;
 };
@@ -61,7 +61,7 @@ export const removeItem = (item, orderId) => async (dispatch) => {
   };
   const res = await fetch(`/api/cart/${orderId}`, options);
   const json = await res.json();
-  console.log(json);
+
   await dispatch(deleteItem(item));
   return json;
 };
@@ -70,7 +70,7 @@ export const getCart = (user) => async (dispatch) => {
   const res = await fetch(`/api/cart/${user.id}`);
   if (res.ok) {
     const cart = await res.json();
-    console.log(cart);
+
     if (cart.id) {
       await dispatch(setCart(cart));
       return cart;
@@ -84,11 +84,9 @@ const cartReducer = (state = initialState, action) => {
   let newCart = { ...state };
   switch (action.type) {
     case SET_CART:
-      console.log("CART", newCart, "Payload", action.payload);
       newCart = action.payload;
       return newCart;
     case ADD_CART:
-      console.log("UPDATING COUNT", newCart.items[action.payload.id]);
       if (newCart.items[action.payload.id]) {
         newCart.items[action.payload.id].count++;
       } else {
@@ -96,9 +94,8 @@ const cartReducer = (state = initialState, action) => {
       }
       return newCart;
     case DELETE_ITEM:
-      console.log(newCart.items);
       delete newCart.items[action.payload.id];
-      console.log(newCart.items);
+
       return newCart;
     default:
       return state;
