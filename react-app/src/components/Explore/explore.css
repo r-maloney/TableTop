@@ -16,6 +16,11 @@ a div {
   grid-template-columns: 35rem auto;
 }
 
+.explore__category {
+  height: 100vh;
+  overflow: scroll;
+}
+
 .explore__business-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -23,7 +28,7 @@ a div {
   justify-items: center;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  height: 100%;
+  /* height: 100%; */
   overflow: scroll;
 }
 
@@ -50,7 +55,7 @@ a div {
   justify-content: center;
 }
 
-.business__container button {
+.business__container > button {
   background: none;
   border: none;
   padding: 0;
@@ -199,31 +204,54 @@ a div {
 
 .business__active {
   display: grid;
-  grid-template-columns: 18rem auto;
-  height: 23rem;
-  width: 30rem;
-
+  grid-template-columns: 20rem auto;
+  height: 18rem;
+  width: 34rem;
   justify-items: center;
   margin-top: 3rem;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 0 1px rgb(219, 219, 219);
+  margin-bottom: 1rem;
+  box-shadow: 3px 3px 5px rgb(224, 224, 224);
+  border-radius: 1rem;
 }
 
 .business__active img {
   height: 18rem;
-  max-width: 18rem;
+  width: 20rem;
+  object-fit: cover;
+  border-radius: 1rem;
 }
 .business__active-description {
-  margin-left: 0.5rem;
+  display: grid;
+  grid-template-rows: 3rem 2rem 2rem auto;
+  margin-top: 0.5rem;
+  margin-left: 0.8rem;
+  height: 18rem;
 }
 .business__active-description h2 {
   font-size: 2rem;
 }
 
 .business__active-description h3 {
+  margin-top: 0.5rem;
   font-size: 1.3rem;
   color: #878787;
+}
+
+.business__active-description a {
+  align-self: end;
+  color: white;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  text-align: center;
+  padding-top: 0.8rem;
+  height: 2.5rem;
+  background-color: #f0881e;
+}
+.business__active-description a:hover {
+  text-decoration: underline;
 }
 
 .mapbox__spot-icon {

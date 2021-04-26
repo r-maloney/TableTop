@@ -36,10 +36,10 @@ const Explore = () => {
               ></img>
               <div className='business__active-description'>
                 <h2>{activeBusiness.name}</h2>
-                <h3>{activeBusiness.rating}</h3>
+                <h3>Rating: {activeBusiness.rating}</h3>
                 <h3>{activeBusiness.description}</h3>
                 <NavLink to={`/explore/${activeBusiness.id}`}>
-                  Click to see menu ...
+                  View Menu
                 </NavLink>
               </div>
             </div>
