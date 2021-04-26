@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, FlyToInterpolator } from "react-map-gl";
 import Business from "../Explore/Business";
 import "../Explore/Explore.css";
 
 const Map = () => {
+  const [selectedBusiness, setSelectedBusiness] = useState(null);
   const businesses = useSelector((state) => Object.values(state.businesses));
 
   const [viewport, setViewport] = useState({
-    latitude: 38.90882113835013,
-    longitude: -76.99803202807391,
-    zoom: 11,
+    latitude: 38.902357299811044,
+    longitude: -77.02530355720046,
+    zoom: 12,
     width: "100%",
     height: "100vh",
   });
 
-  const [selectedBusiness, setSelectedBusiness] = useState(null);
+  // function flyToStore(currentFeature) {
+  //   map.flyTo({
+  //     center: currentFeature.geometry.coordinates,
+  //     zoom: 15,
+  //   });
+  // }
 
   return (
     <>
@@ -32,13 +38,22 @@ const Map = () => {
               longitude={business.long}
               offsetLeft={-15}
               offsetTop={-40}
-              // offset={[0, -50 / 2]}
             >
               <button
                 className='mapbox__spot-icon'
                 onClick={(e) => {
                   e.preventDefault();
                   setSelectedBusiness(business);
+                  console.log(viewport);
+                  setViewport({
+                    ...viewport,
+                    latitude: business.lat,
+                    longitude: business.long,
+                    zoom: 15,
+                    transitionDuration: 500,
+                    transitionInterpolator: new FlyToInterpolator(),
+                  });
+                  // setZoom(15);
                 }}
               >
                 <span>
@@ -53,6 +68,7 @@ const Map = () => {
               latitude={selectedBusiness.lat}
               offsetTop={-30}
               onClose={() => setSelectedBusiness(null)}
+              onClick={() => console.log("CLICKED")}
             >
               <div className='map__popup'>
                 <img
